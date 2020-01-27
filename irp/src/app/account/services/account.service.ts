@@ -17,14 +17,15 @@ export class AccountService {
       "email": email,
       "password": password
     }
-    return this.http.post<any>(this.rootUrl+"student/authenticate", body).pipe(
-      map(
-        userData => {
-          sessionStorage.setItem('prn', userData);
-          return userData;
-        }
-      )
-    );
+    // return this.http.post<any>(this.rootUrl+"student/authenticate", body).pipe(
+    //   map(
+    //     userData => {
+    //       sessionStorage.setItem('prn', userData);
+    //       return userData;
+    //     }
+    //   )
+    // );
+    return this.http.post<any>(this.rootUrl+"/student/authenticate", body);
   }
 
   public isUserLoggedIn() {
