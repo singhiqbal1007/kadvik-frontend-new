@@ -1,15 +1,16 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from 'app/student/dashboard/dashboard.component';
-import { UserProfileComponent } from 'app/student/user-profile/user-profile.component';
-import { TypographyComponent } from 'app/student/typography/typography.component';
-import { TableListComponent } from 'app/student/table-list/table-list.component';
-import { IconsComponent } from 'app/student/icons/icons.component';
-import { MapsComponent } from 'app/student/maps/maps.component';
-import { NotificationsComponent } from 'app/student/notifications/notifications.component';
-import { UpgradeComponent } from 'app/student/upgrade/upgrade.component';
-import { FeedbackListComponent } from 'app/student/feedback/feedback-list/feedback-list.component';
-import { TimetableComponent } from 'app/student/timetable/timetable.component';
-import { FeedbackComponent } from 'app/student/feedback/feedback/feedback.component';
+import { DashboardComponent } from '../../student/dashboard/dashboard.component';
+import { UserProfileComponent } from '../../student/user-profile/user-profile.component';
+import { TableListComponent } from '../../student/table-list/table-list.component';
+import { IconsComponent } from '../../student/icons/icons.component';
+import { TypographyComponent } from '../../student/typography/typography.component';
+import { MapsComponent } from '../../student/maps/maps.component';
+import { NotificationsComponent } from '../../student/notifications/notifications.component';
+import { UpgradeComponent } from '../../student/upgrade/upgrade.component';
+import { FeedbackListComponent } from '../../student/feedback/feedback-list/feedback-list.component';
+import { FeedbackComponent } from '../../student/feedback/feedback/feedback.component';
+import { TimetableComponent } from '../../student/timetable/timetable.component';
+
 
 
 export const AdminLayoutRoutes: Routes = [
