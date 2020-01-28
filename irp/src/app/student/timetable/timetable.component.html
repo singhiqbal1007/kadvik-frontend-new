@@ -1,1 +1,44 @@
-<p>timetable works!</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title ">Time Table</h4>
+            <p class="card-category">DAC(hardcoded)</p>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <tr>
+                  <th class="text-primary" id="day">Timings</th>
+                  <th class="text-primary" *ngFor="let x of timeTable" id="day">{{ x.day }}</th>
+                </tr>
+                <tr>
+                  <th class="text-primary" id="time">10:00-13:00</th>
+                  <td *ngFor="let x of timeTable">{{ x.periodA }}</td>
+                </tr>
+                <tr>
+                  <th class="text-primary" id="time">13:00-14:00</th>
+                  <td colspan="5" class="text-center" id="free">Lunch Break</td>
+                </tr>
+                <tr>
+                  <th class="text-primary" id="time">14:00-16:00</th>
+                  <td *ngFor="let x of timeTable">{{ x.periodB }}</td>
+                </tr>
+                <tr>
+                  <th class="text-primary" id="time">16:00-16:30</th>
+                  <td colspan="5" class="text-center" id="free">Tea Break</td>
+                </tr>
+                <tr>
+                  <th class="text-primary" id="time">16:30-21:00</th>
+                  <td *ngFor="let x of timeTable">{{ x.periodC }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

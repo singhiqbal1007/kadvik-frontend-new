@@ -7,7 +7,7 @@ import { TimeTable } from './models/TimeTable';
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
-  styleUrls: ['./timetable.component.scss']
+  styleUrls: ['./timetable.component.css']
 })
 export class TimetableComponent implements OnInit {
 
@@ -18,7 +18,6 @@ export class TimetableComponent implements OnInit {
     var data=sessionStorage.getItem('prn');
     this.timeTableService.findAll(data).subscribe(data=>{
       this.timeTable=data;
-      console.log(data)
     });
 }
 }
