@@ -1,94 +1,217 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-nav-tabs">
-          <div class="card-header card-header-primary text-center">
-            Punctuality
-          </div>
-          <div class="card-body text-center mb-4">
-            <fieldset class="rating">
-              <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star5" name="punctuality" value="5" />
-              <label class="full" for="punctuality-star5"></label>
-              <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star4" name="punctuality" value="4" />
-              <label class="full" for="punctuality-star4"></label>
-              <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star3" name="punctuality" value="3" />
-              <label class="full" for="punctuality-star3"></label>
-              <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star2" name="punctuality" value="2" />
-              <label class="full" for="punctuality-star2"></label>
-              <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star1" name="punctuality" value="1" />
-              <label class="full" for="punctuality-star1"></label>
-            </fieldset>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-nav-tabs">
-          <div class="card-header card-header-primary text-center">
-            Interaction
-          </div>
-          <div class="card-body text-center mb-4">
-            <fieldset class="rating">
-              <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star5" name="interaction" value="5" />
-              <label class="full" for="interaction-star5"></label>
-              <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star4" name="interaction" value="4" />
-              <label class="full" for="interaction-star4"></label>
-              <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star3" name="interaction" value="3" />
-              <label class="full" for="interaction-star3"></label>
-              <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star2" name="interaction" value="2" />
-              <label class="full" for="interaction-star2"></label>
-              <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star1" name="interaction" value="1" />
-              <label class="full" for="interaction-star1"></label>
-            </fieldset>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-nav-tabs">
-          <div class="card-header card-header-primary text-center">
-            Teaching
-          </div>
-          <div class="card-body text-center mb-4">
-            <fieldset class="rating">
-              <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star5" name="teaching" value="5" />
-              <label class="full" for="teaching-star5"></label>
-              <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star4" name="teaching" value="4" />
-              <label class="full" for="teaching-star4"></label>
-              <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star3" name="teaching" value="3" />
-              <label class="full" for="teaching-star3"></label>
-              <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star2" name="teaching" value="2" />
-              <label class="full" for="teaching-star2"></label>
-              <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star1" name="teaching" value="1" />
-              <label class="full" for="teaching-star1"></label>
-            </fieldset>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 col-sm-6">
-        <div class="card card-nav-tabs">
-          <div class="card-header card-header-primary text-center">
-            Assignments
-          </div>
-          <div class="card-body text-center mb-4">
-            <fieldset class="rating">
-              <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star5" name="assignment" value="5" />
-              <label class="full" for="assignment-star5"></label>
-              <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star4" name="assignment" value="4" />
-              <label class="full" for="assignment-star4"></label>
-              <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star3" name="assignment" value="3" />
-              <label class="full" for="assignment-star3"></label>
-              <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star2" name="assignment" value="2" />
-              <label class="full" for="assignment-star2"></label>
-              <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star1" name="assignment" value="1" />
-              <label class="full" for="assignment-star1"></label>
-            </fieldset>
-          </div>
-        </div>
-      </div>
+    <div class="feedback-head text-center mb-4">
+      <a class="float-left" [routerLink]="['/student/feedback']"><i class="material-icons">arrow_back</i><b>BACK</b></a>
+      <h2 class="title d-inline">{{ faculty.facultyName }}'s Feedback</h2>
     </div>
+    <div class="alert-container" [innerHtml]="alert"></div>
+    <div *ngIf="isFilled == false; then thenBlock; else elseBlock"></div>
+    <ng-template #thenBlock>
+      <form (submit)="submitFeedback()">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-nav-tabs">
+              <div class="card-header card-header-primary text-center">
+                Punctuality
+              </div>
+              <div class="card-body text-center">
+                <div class="rating">
+                  <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star5" name="punctuality" value="5" />
+                  <label class="full" for="punctuality-star5"></label>
+                  <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star4" name="punctuality" value="4" />
+                  <label class="full" for="punctuality-star4"></label>
+                  <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star3" name="punctuality" value="3" />
+                  <label class="full" for="punctuality-star3"></label>
+                  <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star2" name="punctuality" value="2" />
+                  <label class="full" for="punctuality-star2"></label>
+                  <input type="radio" [(ngModel)]="feedback.punctuality" id="punctuality-star1" name="punctuality" value="1" />
+                  <label class="full" for="punctuality-star1"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-nav-tabs">
+              <div class="card-header card-header-primary text-center">
+                Interaction
+              </div>
+              <div class="card-body text-center">
+                <div class="rating">
+                  <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star5" name="interaction" value="5" />
+                  <label class="full" for="interaction-star5"></label>
+                  <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star4" name="interaction" value="4" />
+                  <label class="full" for="interaction-star4"></label>
+                  <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star3" name="interaction" value="3" />
+                  <label class="full" for="interaction-star3"></label>
+                  <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star2" name="interaction" value="2" />
+                  <label class="full" for="interaction-star2"></label>
+                  <input type="radio" [(ngModel)]="feedback.interaction" id="interaction-star1" name="interaction" value="1" />
+                  <label class="full" for="interaction-star1"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-nav-tabs">
+              <div class="card-header card-header-primary text-center">
+                Teaching
+              </div>
+              <div class="card-body text-center">
+                <div class="rating">
+                  <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star5" name="teaching" value="5" />
+                  <label class="full" for="teaching-star5"></label>
+                  <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star4" name="teaching" value="4" />
+                  <label class="full" for="teaching-star4"></label>
+                  <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star3" name="teaching" value="3" />
+                  <label class="full" for="teaching-star3"></label>
+                  <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star2" name="teaching" value="2" />
+                  <label class="full" for="teaching-star2"></label>
+                  <input type="radio" [(ngModel)]="feedback.teaching" id="teaching-star1" name="teaching" value="1" />
+                  <label class="full" for="teaching-star1"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-nav-tabs">
+              <div class="card-header card-header-primary text-center">
+                Assignments
+              </div>
+              <div class="card-body text-center">
+                <div class="rating">
+                  <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star5" name="assignment" value="5" />
+                  <label class="full" for="assignment-star5"></label>
+                  <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star4" name="assignment" value="4" />
+                  <label class="full" for="assignment-star4"></label>
+                  <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star3" name="assignment" value="3" />
+                  <label class="full" for="assignment-star3"></label>
+                  <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star2" name="assignment" value="2" />
+                  <label class="full" for="assignment-star2"></label>
+                  <input type="radio" [(ngModel)]="feedback.assignment" id="assignment-star1" name="assignment" value="1" />
+                  <label class="full" for="assignment-star1"></label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12">
+            <div class="card card-nav-tabs">
+              <div class="card-body text-center">
+                <div class="form-group">
+                  <h4 class="text-primary"><b>Comments</b></h4>
+                  <textarea [(ngModel)]="feedback.comments" name="comments" class="form-control" rows="3" placeholder="Enter your comments here..."></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+            <span *ngIf="loading; then loadingThenBlock; else loadingElseBlock"></span>
+            <ng-template #loadingThenBlock>
+              <button class="btn btn-primary btn-round btn-lg" disabled>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <i class="fa fa-spinner fa-spin t-up"></i>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </button>
+            </ng-template>
+            <ng-template #loadingElseBlock>
+              <button class="btn btn-primary btn-round btn-lg">
+                Submit Feedback&nbsp;&nbsp;
+                <i class="material-icons t-up">thumb_up_alt</i>
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template #elseBlock>
+      <div class="alert alert-success text-center" role="alert">
+        Thanks for filling the feedback.
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">
+              Punctuality
+            </div>
+            <div class="card-body text-center">
+              <div class="filled-rating">
+                <span *ngFor="let number of [0, 1, 2, 3, 4]; index as i">
+                  <span *ngIf="i < feedback.punctuality; then thenBlock; else elseBlock"></span>
+                  <ng-template #thenBlock> <span class="fa fa-star fa-2x checked"></span>&nbsp; </ng-template>
+                  <ng-template #elseBlock> <span class="fa fa-star fa-2x"></span>&nbsp; </ng-template>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">
+              Interaction
+            </div>
+            <div class="card-body text-center">
+              <div class="filled-rating">
+                <span *ngFor="let number of [0, 1, 2, 3, 4]; index as i">
+                  <span *ngIf="i < feedback.interaction; then thenBlock; else elseBlock"></span>
+                  <ng-template #thenBlock> <span class="fa fa-star fa-2x checked"></span>&nbsp; </ng-template>
+                  <ng-template #elseBlock> <span class="fa fa-star fa-2x"></span>&nbsp; </ng-template>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">
+              Teaching
+            </div>
+            <div class="card-body text-center">
+              <div class="filled-rating">
+                <span *ngFor="let number of [0, 1, 2, 3, 4]; index as i">
+                  <span *ngIf="i < feedback.teaching; then thenBlock; else elseBlock"></span>
+                  <ng-template #thenBlock> <span class="fa fa-star fa-2x checked"></span>&nbsp; </ng-template>
+                  <ng-template #elseBlock> <span class="fa fa-star fa-2x"></span>&nbsp; </ng-template>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">
+              Assignments
+            </div>
+            <div class="card-body text-center">
+              <div class="filled-rating">
+                <span *ngFor="let number of [0, 1, 2, 3, 4]; index as i">
+                  <span *ngIf="i < feedback.assignment; then thenBlock; else elseBlock"></span>
+                  <ng-template #thenBlock> <span class="fa fa-star fa-2x checked"></span>&nbsp; </ng-template>
+                  <ng-template #elseBlock> <span class="fa fa-star fa-2x"></span>&nbsp; </ng-template>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <div class="card card-nav-tabs">
+            <div class="card-body text-center">
+              <div class="form-group">
+                <h4 class="text-primary"><b>Comments</b></h4>
+                <textarea [value]="feedback.comments" name="comments" class="form-control" rows="3" disabled></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </div>
-
-  <!-- <div class="main-content">
+</div>
+<!-- <div class="main-content">
     <div class="container-fluid">
       <div class="alert-container" [innerHtml]="alert"></div>
       <h2>{{ faculty.facultyName }} feedback</h2>

@@ -8,6 +8,9 @@ import { Router } from "@angular/router";
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+
+    private loading:boolean = false;
+
     //classes on alert
     private alertAdd = {
         hidden: true
@@ -32,6 +35,7 @@ export class LoginComponent implements OnInit {
     //login function
     public login() {
         this.loginAdd.shake = false;
+        this.loading = true;
         this._accountService.authenticate(this.email, this.password).subscribe(
             data => {
                 if (data == false) {
@@ -39,6 +43,7 @@ export class LoginComponent implements OnInit {
                     this.password = "";
                     this.alertAdd.hidden = false;
                     this.loginAdd.shake = true;
+                    this.loading = false;
                     return;
                 }
                 //if details are correct i.e data has some values

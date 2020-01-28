@@ -17,6 +17,7 @@ export class FeedbackComponent implements OnInit {
   private feedback:Feedback = new Feedback();
   private isFilled:boolean;
   private alert:string;
+  private loading: boolean = false;
   
 
   constructor(
@@ -63,18 +64,21 @@ export class FeedbackComponent implements OnInit {
 
 
   public submitFeedback(){
+    this.loading = true;
     if(Object.keys(this.feedback).length < 5 || this.feedback.comments.length === 0){
       //If All fields are not filled
-      this.alert = `<div class="alert alert-danger">
+      this.alert = `<div class="alert text-center alert-danger">
       Please Fill All details before pressing submit. 
     </div>`
-
+    this.loading = false;
     }
     else{
       //if all fields are filled 
+      this.alert = '';
       this._feedbackService.addFeedback(this.feedback, this.faculty.facultyId).subscribe(
         (data) => {
-          location.reload();
+          this.ngOnInit();
+          //location.reload();
         },
         (err) => {
           console.log(err);
