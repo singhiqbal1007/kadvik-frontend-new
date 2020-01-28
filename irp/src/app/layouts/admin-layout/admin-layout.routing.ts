@@ -7,6 +7,9 @@ import { IconsComponent } from 'app/student/icons/icons.component';
 import { MapsComponent } from 'app/student/maps/maps.component';
 import { NotificationsComponent } from 'app/student/notifications/notifications.component';
 import { UpgradeComponent } from 'app/student/upgrade/upgrade.component';
+import { FeedbackListComponent } from 'app/student/feedback/feedback-list/feedback-list.component';
+import { TimetableComponent } from 'app/student/timetable/timetable.component';
+import { FeedbackComponent } from 'app/student/feedback/feedback/feedback.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -60,4 +63,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'maps',           component: MapsComponent },
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
+    { path: 'feedback',        component: FeedbackListComponent },
+    { path: 'feedback/:id',        component: FeedbackComponent },
+    { path: 'time-table',        component: TimetableComponent },
 ];

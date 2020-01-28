@@ -20,6 +20,9 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
+import { FeedbackComponent } from 'app/student/feedback/feedback/feedback.component';
+import { FeedbackListComponent } from 'app/student/feedback/feedback-list/feedback-list.component';
+import { TimetableComponent } from 'app/student/timetable/timetable.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -42,6 +45,9 @@ import {
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
+    TimetableComponent
   ]
 })
 
