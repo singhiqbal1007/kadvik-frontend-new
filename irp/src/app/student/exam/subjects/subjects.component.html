@@ -1,1 +1,17 @@
 <p>subjects works!</p>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<div class="collection">
+    <div class="title">
+        
+    </div>
+    <ul class="list-group">
+        <li *ngFor="let subject of subjectService.subjects; let i = index" class="list-group-item hoverable">
+            <h5 class='blue-text' (click)=getQuiz(subject.subjectId)>{{i+1}} {{subject.subjectName | titlecase}}</h5>
+        </li>
+    </ul>
+</div>
