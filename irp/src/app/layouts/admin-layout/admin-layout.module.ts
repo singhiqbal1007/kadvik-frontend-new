@@ -23,6 +23,7 @@ import {
 import { FeedbackComponent } from '../../student/feedback/feedback/feedback.component';
 import { FeedbackListComponent } from '../../student/feedback/feedback-list/feedback-list.component';
 import { TimetableComponent } from '../../student/timetable/timetable.component';
+import { ExamModule } from 'app/student/exam/exam.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -35,6 +36,7 @@ import { TimetableComponent } from '../../student/timetable/timetable.component'
     MatInputModule,
     MatSelectModule,
     MatTooltipModule,
+    ExamModule
   ],
   declarations: [
     DashboardComponent,
