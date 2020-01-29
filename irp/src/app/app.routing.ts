@@ -9,11 +9,6 @@ import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
 
 const routes: Routes =[
-  {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'student', redirectTo: '/student/notifications', pathMatch: 'full' },
@@ -22,7 +17,8 @@ const routes: Routes =[
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
-  }
+  },
+  { path: '**', redirectTo: '/student/notifications', pathMatch: 'full' }
 ];
 
 @NgModule({
