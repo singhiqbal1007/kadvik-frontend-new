@@ -1,9 +1,30 @@
 <div class="main-content">
   <div class="container-fluid">
-    <ul class="list-group">
+    <div class="feedback-head text-center mb-4">
+      <h2 class="title">Teachers</h2>
+    </div>
+
+    <div class="row">
+      <div *ngFor="let faculty of facultyList; let i = index" class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-nav-tabs">
+          <div class="card-header card-header-primary text-center">
+            {{ faculty.facultyName }}
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">{{ faculty.subjectName }}</h4>
+            <div class="text-center">
+              <a [routerLink]="['/student', 'feedback', faculty.facultyId]" class="btn btn-primary btn-round text-white">Give Feedback</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- <ul class="list-group">
       <li *ngFor="let faculty of facultyList; let i = index" class="list-group-item">
         <a [routerLink]="['/student', 'feedback', faculty.facultyId]">{{ i + 1 }} {{ faculty.facultyName }}</a>
       </li>
-    </ul>
+    </ul> -->
   </div>
 </div>
