@@ -38,7 +38,7 @@ export class ResultComponent implements OnInit {
       );
     }
     else
-      this.router.navigate(['/student','quiz']);
+      this.router.navigate(['/student', 'exam', 'quiz']);
   }
 
   // onSubmit(){

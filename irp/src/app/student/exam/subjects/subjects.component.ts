@@ -31,7 +31,7 @@ export class SubjectsComponent implements OnInit {
       console.log('bye');
       this.subjectService.subjects = JSON.parse(localStorage.getItem("subjects"));
       if(localStorage.getItem('subjectId')!='0'){
-        this.router.navigate(['/student', 'quiz']);
+        this.router.navigate(['/student', 'exam', 'quiz']);
       }
     }
 
@@ -40,6 +40,6 @@ export class SubjectsComponent implements OnInit {
   getQuiz(id) {
     this.quizService.subjectId = id;
     localStorage.setItem("subjectId", id);
-    this.router.navigate(['/student', 'quiz']);
+    this.router.navigate(['/student', 'exam', 'quiz']);
   }
 }

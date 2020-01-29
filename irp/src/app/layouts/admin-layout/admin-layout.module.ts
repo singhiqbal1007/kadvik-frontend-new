@@ -24,6 +24,10 @@ import { FeedbackComponent } from '../../student/feedback/feedback/feedback.comp
 import { FeedbackListComponent } from '../../student/feedback/feedback-list/feedback-list.component';
 import { TimetableComponent } from '../../student/timetable/timetable.component';
 import { ExamModule } from 'app/student/exam/exam.module';
+import { SubjectsComponent } from 'app/student/exam/subjects/subjects.component';
+import { QuizComponent } from 'app/student/exam/quiz/quiz.component';
+import { ResultComponent } from 'app/student/exam/result/result.component';
+import { FeedbackModule } from 'app/student/feedback/feedback.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -47,9 +51,9 @@ import { ExamModule } from 'app/student/exam/exam.module';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    TimetableComponent,
     FeedbackComponent,
-    FeedbackListComponent,
-    TimetableComponent
+    FeedbackListComponent
   ]
 })
 

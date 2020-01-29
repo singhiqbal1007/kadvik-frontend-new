@@ -21,7 +21,7 @@ export class QuizComponent implements OnInit {
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
       if (this.quizService.qstProgress == 10)
-        this.router.navigate(['/student', 'result']);
+        this.router.navigate(['/student', 'exam', 'result']);
       else{ 
         //if (this.quizService.seconds.toString() != localStorage.getItem('seconds')) 
         this.startTimer();
@@ -96,6 +96,6 @@ export class QuizComponent implements OnInit {
     this.quizService.qstProgress = 10;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
     clearInterval(this.quizService.timer);
-    this.router.navigate(['/student', 'result']);
+    this.router.navigate(['/student', 'exam', 'result']);
   }
 }

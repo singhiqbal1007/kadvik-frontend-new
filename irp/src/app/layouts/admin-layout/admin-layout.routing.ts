@@ -69,6 +69,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "feedback/:id", component: FeedbackComponent },
   { path: "time-table", component: TimetableComponent },
   { path: "exam", component: SubjectsComponent },
-  { path: "quiz", component: QuizComponent },
-  { path: "result", component: ResultComponent }
+  { path: "exam/quiz", component: QuizComponent },
+  { path: "exam/result", component: ResultComponent }
 ];
