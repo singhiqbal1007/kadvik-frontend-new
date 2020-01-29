@@ -16,7 +16,7 @@ const routes: Routes =[
   },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'student', redirectTo: '/student/dashboard', pathMatch: 'full' },
+  { path: 'student', redirectTo: '/student/notifications', pathMatch: 'full' },
    { path: 'student', component: AdminLayoutComponent, canActivate: [AuthGuardService],
     children: [{
       path: '',

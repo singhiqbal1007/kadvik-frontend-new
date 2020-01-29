@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
                 }
                 //if details are correct i.e data has some values
                 sessionStorage.setItem('prn', data);
-                this.router.navigate(["/student/dashboard"]);
+                this.router.navigate(["/student/notifications"]);
             },
             err => {
                

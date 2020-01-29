@@ -1,17 +1,29 @@
-<p>subjects works!</p>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-<div class="collection">
-    <div class="title">
-        
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="feedback-head text-center mb-4">
+      <h2 class="title">Select Exam</h2>
     </div>
-    <ul class="list-group">
-        <li *ngFor="let subject of subjectService.subjects; let i = index" class="list-group-item hoverable">
-            <h5 class='blue-text' (click)=getQuiz(subject.subjectId)>{{i+1}} {{subject.subjectName | titlecase}}</h5>
-        </li>
-    </ul>
+
+    <div class="row">
+      <div *ngFor="let subject of subjectService.subjects; let i = index" class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-nav-tabs">
+          <div class="card-header card-header-primary text-center">
+            {{ subject.subjectName | uppercase }}
+          </div>
+          <div class="card-body text-center">
+            <i class="material-icons">chrome_reader_mode</i>
+            <div class="text-center">
+              <a (click)="getQuiz(subject.subjectId)" class="btn btn-primary btn-round text-white">Start Exam</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- <ul class="list-group">
+  <li *ngFor="let subject of subjectService.subjects; let i = index" class="list-group-item hoverable">
+    <h5 class="blue-text" (click)="getQuiz(subject.subjectId)">{{ i + 1 }} {{ subject.subjectName | titlecase }}</h5>
+  </li>
+</ul> -->
