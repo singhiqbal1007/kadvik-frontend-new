@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { TimetableService } from './services/timetable.service';
 import { TimeTable } from './models/TimeTable';
+import { CourseService } from '../course/services/course.service';
+import { Course } from '../course/models/course';
 
 
 @Component({
@@ -12,13 +14,18 @@ import { TimeTable } from './models/TimeTable';
 export class TimetableComponent implements OnInit {
 
   timeTable: TimeTable[];
-  constructor(private timeTableService: TimetableService) { }
+  course: Course = new Course();
+  constructor(private timeTableService: TimetableService, private _courseService: CourseService) { }
 
   ngOnInit() {
     var data=sessionStorage.getItem('prn');
     this.timeTableService.findAll(data).subscribe(data=>{
       this.timeTable=data;
-      console.log(data)
     });
+    this._courseService.getCourseByStudentPrn(Number(data)).subscribe(
+      (course) => {
+        this.course = course;
+      }
+    )
 }
 }
