@@ -5,7 +5,7 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Time Table</h4>
-            <p class="card-category">{{course.courseName}}</p>
+            <p class="card-category">{{course.courseName | uppercase}}</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -16,23 +16,31 @@
                 </tr>
                 <tr>
                   <th class="text-primary" id="time">10:00-13:00</th>
-                  <td *ngFor="let x of timeTable">{{ x.periodA }}</td>
+                  <td *ngFor="let x of timeTable">{{ x.periodA | uppercase }}</td>
                 </tr>
-                <tr>
-                  <th class="text-primary" id="time">13:00-14:00</th>
-                  <td colspan="5" class="text-center" id="free">Lunch Break</td>
+                <tr class="break br">
+                  <th class="text-white btlr bblr" id="time">13:00-14:00</th>
+                  <td></td>
+                  <td></td>
+                  <td id="free">Recess</td>
+                  <td></td>
+                  <td class="btrr bbrr"></td>
                 </tr>
                 <tr>
                   <th class="text-primary" id="time">14:00-16:00</th>
-                  <td *ngFor="let x of timeTable">{{ x.periodB }}</td>
+                  <td *ngFor="let x of timeTable">{{ x.periodB | uppercase }}</td>
                 </tr>
-                <tr>
-                  <th class="text-primary" id="time">16:00-16:30</th>
-                  <td colspan="5" class="text-center" id="free">Tea Break</td>
+                <tr class="break br">
+                  <th class="text-white btlr bblr" id="time">16:00-16:30</th>
+                  <td></td>
+                  <td></td>
+                  <td id="free">Recess</td>
+                  <td></td>
+                  <td class="btrr bbrr"></td>
                 </tr>
                 <tr>
                   <th class="text-primary" id="time">16:30-21:00</th>
-                  <td *ngFor="let x of timeTable">{{ x.periodC }}</td>
+                  <td *ngFor="let x of timeTable">{{ x.periodC | uppercase }}</td>
                 </tr>
               </table>
             </div>
