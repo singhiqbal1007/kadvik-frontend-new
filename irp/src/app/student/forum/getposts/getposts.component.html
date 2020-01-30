@@ -1,0 +1,28 @@
+<app-posts></app-posts>
+<body>
+<div *ngIf="morePosts == false; then thenBlock; else elseBlock"></div>
+<ng-template #thenBlock>
+<div *ngFor='let x of getPost | slice:0:3' >
+<p>{{ x.firstName }} asks ---- {{ x.postText }}--{{x.time}}--{{x.date}}</p>
+<a [routerLink]="['/','student','comments']" [queryParams]="{postId:x.postId}">Click here to post your comment and see other replies</a>
+
+</div>
+</ng-template>
+<ng-template #elseBlock>
+<div *ngFor="let x of getPost" >
+<p>{{ x.firstName }} says ---- {{ x.postText }}--{{x.time}}--{{x.date}}</p>
+<a [routerLink]="['/','student','comments']" [queryParams]="{postId:x.postId}">Click here to post your comment and see other replies</a>
+
+</div>
+</ng-template>
+
+
+<div >
+<form (submit)="showMore()">
+<div class="form-group row">
+<label class="col-form-label">Click here for more Posts!</label>
+<button class="button" id="add-button" type="submit">Enter here.</button>
+</div> 
+</form>
+</div>
+</body>
