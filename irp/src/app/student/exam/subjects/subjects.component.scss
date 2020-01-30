@@ -1,0 +1,9 @@
+.btn-teal {
+  background-color: teal;
+  opacity: 0.9;
+}
+
+.btn-teal:hover {
+  opacity: 1;
+  box-shadow: 0 7px 10px -5px rgba(24, 123, 128, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.34);
+}
