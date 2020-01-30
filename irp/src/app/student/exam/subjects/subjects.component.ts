@@ -14,7 +14,7 @@ export class SubjectsComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('subjects') == null) {
-      //console.log('hey');
+      console.log('hey');
       this.subjectService.getSubjects().subscribe(
         (data: any) => {
           this.subjectService.subjects = data;
@@ -23,12 +23,15 @@ export class SubjectsComponent implements OnInit {
         }, () => {
           //console.log(JSON.stringify(this.subjectService.subjects));
           localStorage.setItem("subjects", JSON.stringify(this.subjectService.subjects));
+          this.quizService.subjectId=0;
+          localStorage.setItem("subjectId","0");
           this.quizService.examFlag=true;
         }
       );
     } else {
-      //console.log('bye');
+      console.log('bye');
       this.subjectService.subjects = JSON.parse(localStorage.getItem("subjects"));
+      this.subjectService.subjectName=localStorage.getItem("subjectName");
       this.quizService.examFlag=true;
       if(localStorage.getItem('subjectId')!='0'){
         this.router.navigate(['/student', 'exam', 'quiz']);
@@ -39,9 +42,9 @@ export class SubjectsComponent implements OnInit {
 
   getQuiz(id, name) {
     this.quizService.subjectId = id;
-    this.subjectService.subject=name;
-    localStorage.setItem("subjectName", this.subjectService.subject);
     localStorage.setItem("subjectId", id);
+    this.subjectService.subjectName=name;
+    localStorage.setItem("subjectName", name);
     this.router.navigate(['/student', 'exam', 'quiz']);
   }
 }
