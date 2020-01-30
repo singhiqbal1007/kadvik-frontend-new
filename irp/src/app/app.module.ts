@@ -26,13 +26,19 @@ import { LoginComponent } from './account/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { LogoutComponent } from './account/logout/logout.component';
+import { TimeTableListComponent } from './admin/time-table-list/time-table-list.component';
+import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
+import { RegisterComponent } from './account/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+    TimeTableListComponent,
+    TimeTableAdminComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserAnimationsModule,
