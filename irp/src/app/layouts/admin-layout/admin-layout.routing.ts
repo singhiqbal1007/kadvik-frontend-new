@@ -13,6 +13,8 @@ import { TimetableComponent } from "../../student/timetable/timetable.component"
 import { SubjectsComponent } from "app/student/exam/subjects/subjects.component";
 import { QuizComponent } from "app/student/exam/quiz/quiz.component";
 import { ResultComponent } from "app/student/exam/result/result.component";
+import { GetpostsComponent } from "app/student/forum/getposts/getposts.component";
+import { GetcommentsComponent } from "app/student/forum/getcomments/getcomments.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -71,5 +73,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "time-table", component: TimetableComponent },
   { path: "exam", component: SubjectsComponent },
   { path: "exam/quiz", component: QuizComponent },
-  { path: "exam/result", component: ResultComponent }
+  { path: "exam/result", component: ResultComponent },
+  { path: "forum", component:GetpostsComponent },
+  { path: "comments", component: GetcommentsComponent}
 ];

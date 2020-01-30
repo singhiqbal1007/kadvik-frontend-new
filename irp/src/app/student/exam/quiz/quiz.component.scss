@@ -1,0 +1,51 @@
+.card-header {
+  font-size: 1rem;
+}
+
+.card-body th {
+  font-size: 1.1rem;
+}
+
+.card-body tr td {
+  border-radius: 3px;
+}
+
+.card-body {
+  font-size: 0.9rem;
+}
+
+.option:hover {
+  background-color: #9c27b0;
+  color: #fff;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+.option:after {
+  will-change: transform;
+  transition: transform 0.15s linear;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.bg-custom {
+  background-color: #9c27b0;
+}
+
+.card-header-custom {
+  background: linear-gradient(60deg, #8e24aa, #ab47bc);
+  box-shadow: 0 7px 10px -5px rgba(156, 39, 176, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.14);
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Opera and Firefox */
+  }

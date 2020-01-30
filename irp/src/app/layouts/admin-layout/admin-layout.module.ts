@@ -28,6 +28,11 @@ import { SubjectsComponent } from 'app/student/exam/subjects/subjects.component'
 import { QuizComponent } from 'app/student/exam/quiz/quiz.component';
 import { ResultComponent } from 'app/student/exam/result/result.component';
 import { FeedbackModule } from 'app/student/feedback/feedback.module';
+import { ForumModule } from 'app/student/forum/forum.module';
+import { PostsComponent } from 'app/student/forum/posts/posts.component';
+import { GetcommentsComponent } from 'app/student/forum/getcomments/getcomments.component';
+import { CommentsComponent } from 'app/student/forum/comments/comments.component';
+import { GetpostsComponent } from 'app/student/forum/getposts/getposts.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -53,7 +58,11 @@ import { FeedbackModule } from 'app/student/feedback/feedback.module';
     UpgradeComponent,
     TimetableComponent,
     FeedbackComponent,
-    FeedbackListComponent
+    FeedbackListComponent,
+    PostsComponent,
+    GetpostsComponent,
+    GetcommentsComponent,
+    CommentsComponent
   ]
 })
 

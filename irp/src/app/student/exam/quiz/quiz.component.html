@@ -1,57 +1,96 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="quiz-head text-center">
+        <h3 class="title">Java Exam</h3>
+      </div>
+    <div class="progress-container mb-5">
+      <div class="text-primary mb-3"><b>Time Elapsed: 20:20:20</b></div>
+      <div class="progress">
+        <div class="progress-bar bg-custom" role="progressbar" style="width: 50%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
 
-<!-- <link rel="stylesheet" href="/files/materialize.min.css" type='text/html'>
-<link href="/files/icons.css" rel="stylesheet" type='text/html'>
-<script src="/files/jquery.min.js"></script>
-<script src="/files/materialize.min.js"></script> -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <div class="card card-nav-tabs">
+      <div class="card-header card-header-custom">
+        Question 1
+      </div>
+      <div class="card-body table-responsive noselect">
+        <table class="table table-hover">
+          <thead class="text-primary">
+            <th>Which of the following statements are incorrect?</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="option">a) default constructor is called at the time of object declaration</td>
+            </tr>
+            <tr>
+              <td class="option">b) constructor can be parameterized</td>
+            </tr>
+            <tr>
+              <td class="option">c) finalize() method is called when a object goes out of scope and is no longer needed</td>
+            </tr>
+            <tr>
+              <td class="option">d) finalize() method must be declared protected</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer text-muted">
+        <a href="#0" class="btn btn-primary">Previous</a>
+        <a href="#0" class="btn btn-primary">Next</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+        <button class="btn btn-rose btn-round btn-lg">
+          Submit&nbsp;&nbsp;
+          <i class="material-icons t-up">thumb_up_alt</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-<!-- <p>quiz works!</p> -->
-
 <div class="row" *ngIf="this.quizService.questions">
-    <div class="quiz-container" style="width: 80%; margin: auto;">
-        <span class="right">Time Elapsed: {{quizService.displayTimeElapsed()}}</span>
-        <div class="progress">
-            <div class="determinate" [style.width.%]="(quizService.qstProgress+1)*10"></div>
-        </div>
-        <div class="card  blue-grey lighten-5" style="width: 100%;">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-            <div class="card-content">
-                <h5 class="card-title"><span>{{quizService.qstProgress+1}}.
-                    </span>{{quizService.questions[quizService.qstProgress].question}}</h5>
-            </div>
-
-            <div class="card-action">
-                <ul class="collection answer">
-                    <ng-container
-                        *ngFor="let opt of quizService.questions[quizService.qstProgress].options;let i = index">
-                        <div *ngIf="activate==(i+1); then thenBlock; else elseBlock"></div>
-                        <ng-template #thenBlock>
-                            <li id="choice" class="collection-item hoverable active"
-                                (click)=answer(quizService.questions[quizService.qstProgress].question_id,(i+1))>{{opt}}
-                            </li>
-                        </ng-template>
-                        <ng-template #elseBlock>
-                            <li id="choice" class="collection-item hoverable"
-                                (click)=answer(quizService.questions[quizService.qstProgress].question_id,(i+1))>{{opt}}
-                            </li>
-                        </ng-template>
-                    </ng-container>
-                </ul>
-            </div>
-
-            <div class="card-content">
-                <button (click)=previous(quizService.qstProgress) class="card-link teal border hoverable text-white">Previous</button>
-                <button (click)=next(quizService.qstProgress) class="card-link teal border hoverable text-white">Next</button>
-                <button (click)=onSubmit() type="submit" class="right hoverable">Submit
-                    <i class="material-icons right">send</i>
-                </button>
-            </div>
-        </div>
+  <div class="quiz-container" style="width: 80%; margin: auto;">
+    <span>Time Elapsed: {{ quizService.displayTimeElapsed() }}</span>
+    <div class="progress">
+      <div class="determinate" [style.width.%]="(quizService.qstProgress + 1) * 10"></div>
     </div>
-</div>
-<!-- <script>
-    onclick = "document.getElementById('choice').style.color = teal lighten-2";
-</script> -->
+    <div class="card  blue-grey lighten-5" style="width: 100%;">
+      <div class="card-content">
+        <h5 class="card-title">
+          <span>{{ quizService.qstProgress + 1 }}. </span>{{ quizService.questions[quizService.qstProgress].question }}
+        </h5>
+      </div>
+
+      <div class="card-action">
+        <ul class="collection answer">
+          <ng-container *ngFor="let opt of quizService.questions[quizService.qstProgress].options; let i = index">
+            <div *ngIf="activate == i + 1; then thenBlock; else elseBlock"></div>
+            <ng-template #thenBlock>
+              <li id="choice" class="collection-item hoverable active" (click)="answer(quizService.questions[quizService.qstProgress].question_id, i + 1)">{{ opt }}</li>
+            </ng-template>
+            <ng-template #elseBlock>
+              <li id="choice" class="collection-item hoverable" (click)="answer(quizService.questions[quizService.qstProgress].question_id, i + 1)">{{ opt }}</li>
+            </ng-template>
+          </ng-container>
+        </ul>
+      </div>
+
+      <div class="card-content">
+        <button (click)="previous(quizService.qstProgress)" class="card-link teal border hoverable text-white">Previous</button>
+        <button (click)="next(quizService.qstProgress)" class="card-link teal border hoverable text-white">Next</button>
+        <button (click)="onSubmit(quizService.qstProgress)" type="submit" class="right hoverable">
+          Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
