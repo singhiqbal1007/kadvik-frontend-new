@@ -1,28 +1,104 @@
-<app-posts></app-posts>
-<body>
-<div *ngIf="morePosts == false; then thenBlock; else elseBlock"></div>
-<ng-template #thenBlock>
-<div *ngFor='let x of getPost | slice:0:3' >
-<p>{{ x.firstName }} asks ---- {{ x.postText }}--{{x.time}}--{{x.date}}</p>
-<a [routerLink]="['/','student','comments']" [queryParams]="{postId:x.postId}">Click here to post your comment and see other replies</a>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="feedback-head text-center mb-4">
+      <h2 class="title">Discussion</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert-container" [innerHtml]="alert"></div>
+        <div class="card">
+          <div class="card-header card-header-rose mb-3">
+            <h4 class="card-title"><b>Have a question?</b></h4>
+          </div>
+          <div class="card-body">
+            <div class="text-container mb-4">
+              <textarea [(ngModel)]="post.postText" placeholder="Enter your question here!" name="text" class="form-control" id="firstName" rows="4"></textarea>
+            </div>
+            <div class="btn-container text-center mb-3">
+              <span *ngIf="askLoading; then askLoadingThenBlock; else askLoadingElseBlock"></span>
+              <ng-template #askLoadingThenBlock>
+                <button class="btn btn-rose btn-round btn-lg" disabled>
+                  <i class="fa fa-spinner fa-spin t-up"></i>
+                </button>
+                </ng-template>
+                <ng-template #askLoadingElseBlock>
+                  <button (click)="postSubmit()" class="btn btn-rose">
+                    Ask
+                  </button>
+                </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div *ngIf="morePosts == false; then thenBlock; else elseBlock"></div>
+      <!-- <ng-template #thenBlock>
+        <div *ngFor="let x of getPost | slice: 0:3">
+          <p>{{ x.firstName }} asks ---- {{ x.postText }}--{{ x.time }}--{{ x.date }}</p>
+          <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">Click here to post your comment and see other replies</a>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div *ngFor="let x of getPost">
+          <p>{{ x.firstName }} says ---- {{ x.postText }}--{{ x.time }}--{{ x.date }}</p>
+          <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">Click here to post your comment and see other replies</a>
+        </div>
+      </ng-template> -->
+      <ng-template #thenBlock>
+        <div *ngFor="let x of getPost | slice: 0:3" class="col-lg-4 col-md-4 col-sm-4">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">{{ x.firstName | titlecase }} Asks</div>
+            <div class="card-body text-center">
+              <h4 class="card-title">{{ x.postText }}</h4>
+              <div class="button-container text-center">
+                <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">
+                  <button type="button" class="btn btn-primary">Add comments</button>
+                </a>
+              </div>
+            </div>
+            <div class="card-footer text-muted">{{ x.date }} | {{ x.time }}</div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div *ngFor="let x of getPost" class="col-lg-4 col-md-4 col-sm-4">
+          <div class="card card-nav-tabs">
+            <div class="card-header card-header-primary text-center">{{ x.firstName | titlecase }} Asks</div>
+            <div class="card-body text-center">
+              <h4 class="card-title">{{ x.postText }}</h4>
+              <div class="button-container text-center">
+                <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">
+                  <button type="button" class="btn btn-primary">Add comments</button>
+                </a>
+              </div>
+            </div>
+            <div class="card-footer text-muted">{{ x.date }} | {{ x.time }}</div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+
+    <div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+          <span *ngIf="showMoreLoading; then loadingThenBlock; else loadingElseBlock"></span>
+          <ng-template #loadingThenBlock>
+            <button class="btn btn-rose btn-round btn-lg" disabled>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <i class="fa fa-spinner fa-spin t-up"></i>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </button>
+          </ng-template>
+          <ng-template #loadingElseBlock>
+            <button (click)="showMore()" class="btn btn-rose btn-round btn-lg">
+              Show More&nbsp;&nbsp;
+              <i class="material-icons t-up">expand_more</i>
+            </button>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</ng-template>
-<ng-template #elseBlock>
-<div *ngFor="let x of getPost" >
-<p>{{ x.firstName }} says ---- {{ x.postText }}--{{x.time}}--{{x.date}}</p>
-<a [routerLink]="['/','student','comments']" [queryParams]="{postId:x.postId}">Click here to post your comment and see other replies</a>
-
-</div>
-</ng-template>
-
-
-<div >
-<form (submit)="showMore()">
-<div class="form-group row">
-<label class="col-form-label">Click here for more Posts!</label>
-<button class="button" id="add-button" type="submit">Enter here.</button>
-</div> 
-</form>
-</div>
-</body>

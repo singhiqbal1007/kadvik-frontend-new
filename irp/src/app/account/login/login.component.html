@@ -42,8 +42,20 @@
                     </a>
                   </div>
                 </div>
-                <p class="description text-center">Please Log in...</p>
                 <div class="card-body">
+                  <div class="togglebutton text-center">
+                    <span *ngIf="adminToggle; then thenBlock; else elseBlock"></span>
+                    <ng-template #thenBlock>
+                      <span class="description text-primary">Login as Admin</span>
+                    </ng-template>
+                    <ng-template #elseBlock>
+                      <span class="description">Login as Admin</span>
+                    </ng-template>
+                    <div><label>
+                      <input [(ngModel)]="adminToggle" name="adminToggle" type="checkbox">
+                      <span class="toggle"></span>
+                    </label></div>
+                  </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">

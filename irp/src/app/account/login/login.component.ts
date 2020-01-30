@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
 
     private loading:boolean = false;
 
+    private adminToggle:boolean = false;
+
     //classes on alert
     private alertAdd = {
         hidden: true
@@ -30,7 +32,9 @@ export class LoginComponent implements OnInit {
         private _accountService: AccountService
     ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        console.log(this.adminToggle)
+    }
 
     //login function
     public login() {

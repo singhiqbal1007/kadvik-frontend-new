@@ -9,7 +9,7 @@ import { Event, Router, NavigationStart, NavigationEnd } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showLoadingIndicator = true;
+  showLoadingIndicator;
   constructor(private _router: Router){
     this._router.events.subscribe((routerEvent: Event) => {
       if(routerEvent instanceof NavigationStart) {
