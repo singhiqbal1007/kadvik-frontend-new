@@ -16,6 +16,7 @@ export class ResultComponent implements OnInit {
   ngOnInit() {
     if (parseInt(localStorage.getItem('qstProgress')) == 10) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
+      this.quizService.seconds= 1800-this.quizService.seconds;
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
       this.prn = sessionStorage.getItem('prn');
@@ -55,7 +56,7 @@ export class ResultComponent implements OnInit {
     this.quizService.qstProgress = 0;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
     localStorage.setItem('questions', "");
-    this.quizService.seconds = 0;
+    this.quizService.seconds = 1800;
     localStorage.setItem('seconds', this.quizService.seconds.toString());
     this.quizService.subjectId = 0;
     localStorage.setItem('subjectId', this.quizService.subjectId.toString());

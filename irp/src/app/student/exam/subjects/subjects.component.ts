@@ -37,8 +37,10 @@ export class SubjectsComponent implements OnInit {
 
   }
 
-  getQuiz(id) {
+  getQuiz(id, name) {
     this.quizService.subjectId = id;
+    this.subjectService.subject=name;
+    localStorage.setItem("subjectName", this.subjectService.subject);
     localStorage.setItem("subjectId", id);
     this.router.navigate(['/student', 'exam', 'quiz']);
   }

@@ -10,12 +10,22 @@
   border-radius: 3px;
 }
 
+.td {
+  width: 100%;
+}
+
 .card-body {
   font-size: 0.9rem;
 }
 
+.active {
+  background-color: teal;
+  color: white;
+}
+
 .option:hover {
-  background-color: #9c27b0;
+  background-color: teal;
+  opacity: 0.5;
   color: #fff;
   cursor: pointer;
   text-overflow: ellipsis;
@@ -32,7 +42,7 @@
 }
 
 .bg-custom {
-  background-color: #9c27b0;
+  background-color: teal;
 }
 
 .card-header-custom {
@@ -40,12 +50,27 @@
   box-shadow: 0 7px 10px -5px rgba(156, 39, 176, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.14);
 }
 
+.btn-teal {
+  background-color: teal;
+  opacity: 0.9;
+}
+
+.btn-teal:hover {
+  opacity: 1;
+  box-shadow: 0 7px 10px -5px rgba(24, 123, 128, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.34);
+}
+
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Opera and Firefox */
-  }
+}
+
+// .option{
+//   width: 100%;
+//   margin: auto;
+// }

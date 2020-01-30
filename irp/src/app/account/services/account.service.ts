@@ -3,6 +3,7 @@ import { Student } from '../models/student';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Register } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,7 @@ export class AccountService {
     sessionStorage.removeItem('prn')
   }
 
-  public register(student: Student) {
+  public register(student: Register) {
     return this.http.post<Student>(this.rootUrl+"/student/register", student);
   }
 

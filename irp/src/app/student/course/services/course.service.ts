@@ -14,6 +14,13 @@ export class CourseService {
 
   readonly rootUrl = "http://localhost:8080/api/course";
 
+
+  readonly allCourseUrl = "http://localhost:8080/api/course/getAllCourse";
+
+  public getAllCourse(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.allCourseUrl);
+  }
+
   public getCourseByStudentPrn(prn:number): Observable<Course>{
     var body = {
       "prn" : prn
@@ -22,4 +29,5 @@ export class CourseService {
     return this.http.post<Course>(this.rootUrl+"/getCourseByStudentPrn", body);
   }
 
+  
 }
