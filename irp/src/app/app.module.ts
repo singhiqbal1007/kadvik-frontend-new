@@ -30,6 +30,7 @@ import { TimeTableListComponent } from './admin/time-table-list/time-table-list.
 import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
 import { RegisterComponent } from './account/register/register.component';
 import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin-layout.component';
+import { AdminComponentsModule } from './layouts/main-admin-layout/components/admin-components.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin
     ReactiveFormsModule,
     HttpModule,
     ComponentsModule,
+    AdminComponentsModule,
     RouterModule,
     AppRoutingModule,
     HttpClientModule,
