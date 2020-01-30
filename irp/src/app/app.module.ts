@@ -29,11 +29,13 @@ import { LogoutComponent } from './account/logout/logout.component';
 import { TimeTableListComponent } from './admin/time-table-list/time-table-list.component';
 import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
 import { RegisterComponent } from './account/register/register.component';
+import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin-layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    MainAdminLayoutComponent,
     LoginComponent,
     LogoutComponent,
     TimeTableListComponent,
