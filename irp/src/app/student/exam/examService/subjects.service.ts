@@ -9,7 +9,7 @@ export class SubjectsService {
 
   rootUrl = "http://localhost:8080/api";
   subjects: any[];
-  subject;
+  subjectName:string;
 
   constructor(private http: HttpClient) { }
 

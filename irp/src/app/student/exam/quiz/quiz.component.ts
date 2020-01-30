@@ -23,7 +23,7 @@ export class QuizComponent implements OnInit {
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
       this.progressPercent=(this.quizService.qstProgress+1)*10;
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
-      this.subjectService.subject= localStorage.getItem("subjectName");
+      this.subjectService.subjectName= localStorage.getItem("subjectName");
       if (this.quizService.qstProgress == 10)
         this.router.navigate(['/student', 'exam', 'result']);
       else {
