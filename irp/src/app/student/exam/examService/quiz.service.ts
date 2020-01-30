@@ -14,6 +14,7 @@ export class QuizService {
   qstProgress: number;
   correctAnswerCounter: number = 0;
   subjectId: number;
+  examFlag: boolean= false;
   // qIds: QuestionId[];
 
   //---ctor---
@@ -45,7 +46,7 @@ export class QuizService {
       body.push(obj);
     }
     //var body = this.questions.map(question => question.questionId);
-    console.log(body);
+    //console.log(body);
     return this.http.post<any>(this.rootUrl + "/exam/answers", body);
   }
 

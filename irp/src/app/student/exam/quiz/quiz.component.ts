@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { QuizService } from '../examService/quiz.service';
+import { jsonpFactory } from '@angular/http/src/http_module';
 
 @Component({
   selector: 'app-quiz',
@@ -9,41 +10,43 @@ import { QuizService } from '../examService/quiz.service';
 })
 export class QuizComponent implements OnInit {
 
+  reload: Boolean = true;
   colour = 'brown lighten-1';
   activate: number;
 
   constructor(private router: Router, private quizService: QuizService) { }
 
   ngOnInit() {
-     
+
     if (parseInt(localStorage.getItem('seconds')) > 0) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
       if (this.quizService.qstProgress == 10)
         this.router.navigate(['/student', 'exam', 'result']);
-      else{ 
-        //if (this.quizService.seconds.toString() != localStorage.getItem('seconds')) 
-        this.startTimer();
+      else {
+        if (this.quizService.examFlag == false)
+          this.startTimer();
+
       }
 
     }
     else {
       this.quizService.seconds = 0;
       this.quizService.qstProgress = 0;
-      // this.quizService.getQuestions().subscribe(
-      //   (data: any) => {
-      //     console.log('quizData'+ data);
-      //     this.quizService.questions = data;
-      //     this.startTimer();
-      //   }
-      // );
+      /* this.quizService.getQuestions().subscribe(
+         (data: any) => {
+           console.log('quizData'+ data);
+           this.quizService.questions = data;
+           this.startTimer();
+         }
+       );*/
       if (localStorage.getItem('subjects') == null) {
         this.getSubjectList();
       }
       this.quizService.getQuestionsBySubject().subscribe(
         (data: any) => {
-          console.log('quizDataByQst' + data);
+          //console.log('quizDataByQst' + data);
           this.quizService.questions = data;
           this.startTimer();
         }
@@ -57,9 +60,13 @@ export class QuizComponent implements OnInit {
       localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
       this.quizService.seconds++;
       localStorage.setItem('seconds', this.quizService.seconds.toString());
+      if (this.quizService.seconds == 1800) {
+        this.onSubmit();
+        window.alert("Time's Up");
+      }
     }, 1000);
+    //console.log(this.quizService.seconds);
 
-    console.log(this.quizService.seconds);
   }
 
   getSubjectList() {
@@ -67,7 +74,7 @@ export class QuizComponent implements OnInit {
   }
 
   answer(qId, choice) {
-    console.log(this.quizService.qstProgress);
+    //console.log(this.quizService.qstProgress);
     this.quizService.questions[this.quizService.qstProgress].answer = choice;
     localStorage.setItem('questions', JSON.stringify(this.quizService.questions));
     this.next(this.quizService.qstProgress);
@@ -92,10 +99,11 @@ export class QuizComponent implements OnInit {
     this.activate = this.quizService.questions[this.quizService.qstProgress].answer;
   }
 
-  onSubmit(qProgress) {
+  onSubmit() {
     this.quizService.qstProgress = 10;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
     clearInterval(this.quizService.timer);
+    this.quizService.examFlag = false;
     this.router.navigate(['/student', 'exam', 'result']);
   }
 }

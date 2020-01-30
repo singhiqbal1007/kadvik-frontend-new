@@ -14,22 +14,22 @@ export class SubjectsComponent implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('subjects') == null) {
-      console.log('hey');
+      //console.log('hey');
       this.subjectService.getSubjects().subscribe(
         (data: any) => {
-          //console.log(JSON.stringify(data));
           this.subjectService.subjects = data;
-          //console.log(JSON.stringify(this.subjectService.subjects));
         }, (err) => {
           console.log(err);
         }, () => {
-          console.log(JSON.stringify(this.subjectService.subjects));
+          //console.log(JSON.stringify(this.subjectService.subjects));
           localStorage.setItem("subjects", JSON.stringify(this.subjectService.subjects));
+          this.quizService.examFlag=true;
         }
       );
     } else {
-      console.log('bye');
+      //console.log('bye');
       this.subjectService.subjects = JSON.parse(localStorage.getItem("subjects"));
+      this.quizService.examFlag=true;
       if(localStorage.getItem('subjectId')!='0'){
         this.router.navigate(['/student', 'exam', 'quiz']);
       }

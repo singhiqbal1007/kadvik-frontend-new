@@ -12,7 +12,7 @@
 
 <div class="row" *ngIf="this.quizService.questions">
     <div class="quiz-container" style="width: 80%; margin: auto;">
-        <span>Time Elapsed: {{quizService.displayTimeElapsed()}}</span>
+        <span class="right">Time Elapsed: {{quizService.displayTimeElapsed()}}</span>
         <div class="progress">
             <div class="determinate" [style.width.%]="(quizService.qstProgress+1)*10"></div>
         </div>
@@ -45,7 +45,7 @@
             <div class="card-content">
                 <button (click)=previous(quizService.qstProgress) class="card-link teal border hoverable text-white">Previous</button>
                 <button (click)=next(quizService.qstProgress) class="card-link teal border hoverable text-white">Next</button>
-                <button (click)=onSubmit(quizService.qstProgress) type="submit" class="right hoverable">Submit
+                <button (click)=onSubmit() type="submit" class="right hoverable">Submit
                     <i class="material-icons right">send</i>
                 </button>
             </div>
