@@ -7,9 +7,14 @@ import { AuthGuardService } from './auth-guard.service';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
+import { TimeTableListComponent } from './admin/time-table-list/time-table-list.component';
+import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
+import { RegisterComponent } from './account/register/register.component';
 
 const routes: Routes =[
   { path: 'login', component: LoginComponent },
+  { path: 'admin/register', component: RegisterComponent},
+  { path: 'admin/timeTableAdmin/:courseId', component: TimeTableAdminComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'student', redirectTo: '/student/notifications', pathMatch: 'full' },
    { path: 'student', component: AdminLayoutComponent, canActivate: [AuthGuardService],
