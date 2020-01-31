@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../examService/quiz.service';
 import { Router } from '@angular/router';
+import { SubjectsService } from '../examService/subjects.service';
+
 
 @Component({
   selector: 'app-result',
@@ -11,14 +13,15 @@ export class ResultComponent implements OnInit {
 
   prn;
 
-  constructor(private quizService: QuizService, private router: Router) { }
+  constructor(private quizService: QuizService, private router: Router, private subjectService: SubjectsService) { }
 
   ngOnInit() {
     if (parseInt(localStorage.getItem('qstProgress')) == 10) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
-      this.quizService.seconds= 1800-this.quizService.seconds;
+      this.quizService.seconds = 1800 - this.quizService.seconds;
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
+      this.subjectService.subjectName = localStorage.getItem("subjectName")
       this.prn = sessionStorage.getItem('prn');
       //console.log(this.quizService.questions);
       this.quizService.getAnswers().subscribe(
@@ -37,19 +40,19 @@ export class ResultComponent implements OnInit {
             //console.log("sub ans"+ele.answer);
           }
           );
-        }
+        },
+        (err) => { console.log(err) },
+        () => { this.submitScore(); }
       );
+
     }
     else
       this.router.navigate(['/student', 'exam', 'quiz']);
   }
 
-  // onSubmit(){
-  //   this.quizService.submitScore().subscribe(()=>
-  //   this.restart();
-
-  //   );
-  // }
+  submitScore() {
+    this.quizService.submitMarks().subscribe();
+  }
 
   restart() {
 

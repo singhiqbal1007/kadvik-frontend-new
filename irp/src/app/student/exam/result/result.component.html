@@ -1,27 +1,79 @@
-<!-- <p>result works!</p> -->
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="card card-nav-tabs">
+            <div class="card-header card-header-custom">
+                {{this.subjectService.subjectName | uppercase}} EXAM COMPLETED
+            </div>
+            <div class="card-body">
+                <h4>PRN: {{prn}}</h4>
+                <h3>Score: {{this.quizService.correctAnswerCounter}}/10</h3>
+                <span>Time Elapsed - {{this.quizService.displayTimeElapsed()}}</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn btn-rose btn-round btn-lg" (click)="restart()">
+                New Exam&nbsp;&nbsp;
+                <i class="material-icons t-up">assignment</i>
+                <i class="material-icons t-up">cached</i>
+            </button>
+        </div>
+
+        <br />
+        <hr />
+
+        <h3>Review Questions with Answers</h3>
+        <ng-container *ngFor="let qn of quizService.questions;let i=index">
+            <div class="card">
+                <div class="card-header card-qustion-custom">
+                    <span id="qnum">Question {{i+1}}</span>
+                </div>
+                <div class="card-body">
+                    <h3>{{qn.question}}</h3>
+                    <ul class="collection">
+                        <ng-container *ngFor="let option of qn.options;let j = index">
+                            <hr />
+                            <tr *ngIf="option != null" class="option">
+                                <td style="width:100%">{{option}}</td>
+                                <td><span class="badge float-right" *ngIf="qn.correct==(j+1)">
+                                        <i class="material-icons text-success">check_circle</i>
+                                    </span>
+                                    <span class="badge" *ngIf="qn.answer==(j+1) && qn.correct!=(j+1)">
+                                        <i class="material-icons text-danger" style="float: right">backspace</i>
+                                    </span></td>
+                            </tr>
+                        </ng-container>
+                    </ul>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+
+
+<!-- <p>result works!</p>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script> -->
+<!--
 
 <div class="row">
     <div class="col s8 offset-s2">
         <h4 class="header">Completed!</h4>
-        <div class="card horizontal">
-            <!-- <div class="card-image">
-          <img src="../../assets/img/trophy.png" style="width: 250px;height : 250px;">
-        </div> -->
+        <div class="card horizontal">            
             <div class="card-stacked">
                 <div class="card-content">
                     <h4>PRN: {{prn}}</h4>
                     <h3>Score: {{this.quizService.correctAnswerCounter}}/10</h3>
                     <span>Time Elapsed : {{this.quizService.displayTimeElapsed()}}</span>
                 </div>
-                <!-- <div class="card-action">
+                 <div class="card-action">
             <button class="btn" (click)="OnSubmit()">Submit</button>
-          </div> -->
+          </div> 
             </div>
             <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="restart()">
                 <i class="material-icons">replay</i>
@@ -29,7 +81,8 @@
         </div>
         <br/>
         <hr/>
-        <!-- Qn with correct answer -->
+
+
         <h3>Questions with Correct Answers</h3>
         <ng-container *ngFor="let qn of quizService.questions;let i=index">
             <div class="card teal">
@@ -55,4 +108,4 @@
             </div>
         </ng-container>
     </div>
-</div>
+</div> -->

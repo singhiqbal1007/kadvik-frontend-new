@@ -14,7 +14,7 @@ export class QuizService {
   qstProgress: number;
   correctAnswerCounter: number = 0;
   subjectId: number;
-  examFlag: boolean= false;
+  examFlag: boolean = false;
   // qIds: QuestionId[];
 
   //---ctor---
@@ -31,8 +31,8 @@ export class QuizService {
     return this.http.get(this.rootUrl + "/exam/quiz");
   }
 
-  getQuestionsBySubject(): Observable<any>{
-    this.subjectId= parseInt(localStorage.getItem('subjectId'));
+  getQuestionsBySubject(): Observable<any> {
+    this.subjectId = parseInt(localStorage.getItem('subjectId'));
     var body = {
       'subjectId': this.subjectId
     }
@@ -50,10 +50,26 @@ export class QuizService {
     return this.http.post<any>(this.rootUrl + "/exam/answers", body);
   }
 
-  // submitScore(){
-  //   var body= ;
-  //   body.score= this.correctAnswerCounter;
-  //   body.timeSpent= this.seconds;
-  //   return this.http.post()
-  // }
+  submitMarks() {
+    var body
+    if(this.subjectId!=null){
+      body= {
+        "prn": sessionStorage.getItem("prn"),
+        "subjectId": this.subjectId,
+        "marks": this.correctAnswerCounter
+      }
+      console.log(body);
+      return this.http.post(this.rootUrl + "/result/submit", body);
+    }
+    else{
+      alert("Marks are Already Submitted");
+      body= {
+        "prn": sessionStorage.getItem("prn"),
+        "subjectId": 0,
+        "marks": this.correctAnswerCounter
+      }
+      return this.http.post(this.rootUrl + "/result/submit", body);
+    }
+
+  }
 }

@@ -1,0 +1,71 @@
+#qnum{
+    color: white;
+}
+
+.card-header {
+  font-size: 1rem;
+}
+
+.card-body th {
+  font-size: 1.1rem;
+}
+
+.card-body tr td {
+  border-radius: 3px;
+}
+
+.td {
+  width: 100%;
+}
+
+.card-body {
+  font-size: 0.9rem;
+}
+
+.active {
+  background-color: teal;
+  color: white;
+}
+
+.option:after {
+  will-change: transform;
+  transition: transform 0.15s linear;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.bg-custom {
+  background-color: teal;
+}
+
+.card-header-custom {
+  background: linear-gradient(60deg, #8e24aa, #ab47bc);
+  box-shadow: 0 7px 10px -5px rgba(156, 39, 176, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.14);
+}
+
+.card-qustion-custom {
+  background: linear-gradient(60deg, #008080, #00a0a0);
+  box-shadow: 0 7px 10px -5px rgba(21, 115, 109, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.14);
+}
+
+.btn-teal {
+  background-color: teal;
+  opacity: 0.9;
+}
+
+.btn-teal:hover {
+  opacity: 1;
+  box-shadow: 0 7px 10px -5px rgba(24, 123, 128, 0.4), 0 4px 20px 0px rgba(0, 0, 0, 0.34);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+}
