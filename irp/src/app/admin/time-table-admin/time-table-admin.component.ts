@@ -64,7 +64,7 @@ export class TimeTableAdminComponent implements OnInit {
      })
       this._adminService.updateTimeTable(this.timeTable).subscribe(
         (data) => {
-           this.router.navigate(['/courses']);
+           this.router.navigate(['/admin/timetable']);
          },
          (err) => {
            console.log(err);

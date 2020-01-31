@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Register } from '../models/register';
+import { Register } from '../../account/models/register';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from '../services/account.service';
+import { AccountService } from '../../account/services/account.service';
 import { CourseAdmin } from 'app/admin/model/CourseAdmin';
 import { CourseService } from 'app/student/course/services/course.service';
 
