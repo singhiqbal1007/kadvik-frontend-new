@@ -18,7 +18,6 @@ export class PostsService {
   public postSubmit(post: Posts) {
 
     let nid = sessionStorage.getItem('prn');
-    console.log(nid);
     post.prn=nid;
     return this.http.post<any>(this.rootUrl+"/addposts", post);
   }

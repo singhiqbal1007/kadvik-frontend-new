@@ -25,7 +25,6 @@ import { ResultComponent } from 'app/student/exam/result/result.component';
 import { FeedbackModule } from 'app/student/feedback/feedback.module';
 import { ForumModule } from 'app/student/forum/forum.module';
 import { GetcommentsComponent } from 'app/student/forum/getcomments/getcomments.component';
-import { CommentsComponent } from 'app/student/forum/comments/comments.component';
 import { GetpostsComponent } from 'app/student/forum/getposts/getposts.component';
 @NgModule({
   imports: [
@@ -50,7 +49,6 @@ import { GetpostsComponent } from 'app/student/forum/getposts/getposts.component
     FeedbackListComponent,
     GetpostsComponent,
     GetcommentsComponent,
-    CommentsComponent
   ]
 })
 

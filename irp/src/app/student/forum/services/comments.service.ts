@@ -22,9 +22,7 @@ export class CommentsService {
       postId:Number(postId),
       commentText: comments.commentText,
     };
-    console.log(body);
     let nid = sessionStorage.getItem('prn');
-    console.log(nid);
     let nid1=Number(nid);
     comments.prn=nid1;
     return this.http.post<any>(this.rootUrl+"/addcomments", body);
@@ -32,9 +30,7 @@ export class CommentsService {
 
   public findFirstThree(data):Observable<Comments[]>{
     let params= new HttpParams();
-    console.log("pid",data)
     params = params.set("postId",data);
-    console.log("params",params);
     return this.http.get<Comments[]>(this.rootUrl+"/getFirstThree",{params});
   }
 
@@ -45,9 +41,7 @@ export class CommentsService {
   }
   public findAllComments(data):Observable<Comments[]>{
     let params= new HttpParams();
-    console.log("pid",data)
     params = params.set("postId",data);
-    console.log("params",params);
     return this.http.get<Comments[]>(this.rootUrl+"/getAllComments",{params});
   }
   

@@ -1,5 +1,5 @@
 <div *ngIf="moreComments == false; then thenBlock; else elseBlock"></div>
-<p>asas</p>
+<p>asasdfasfasf</p>
 <ng-template #thenBlock>
   <div *ngFor="let x of getComment | slice: 0:3">
     <p>{{ x.firstName }} says ---- {{ x.commentText }}--{{ x.time }}--{{ x.date }}</p>
@@ -27,7 +27,7 @@
       <div class="comments-container">
         <textarea [(ngModel)]="comments.commentText" name="comments" class="form-control" required></textarea>
       </div>
-      <button class="button" id="add-button" type="submit">Enter here.</button>
+      <button class="button" id="add-button2" type="submit">Enter here.</button>
     </div>
   </form>
 </div>

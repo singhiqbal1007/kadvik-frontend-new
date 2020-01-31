@@ -44,7 +44,6 @@ export class GetcommentsComponent implements OnInit {
     var data1 = this.route.snapshot.queryParamMap.get('postId');
     this.postId = Number(data1);
     this.moreComments=false;
-    console.log("asa"+this.moreComments);
     this.commentsService.findFirstThree(this.postId).subscribe(data=>{
       this.getComment=data;
       // this.refreshData(); //working for ajax
@@ -57,14 +56,11 @@ public postSubmit(){
   {
     this.commentsService.postSubmit(this.comments, this.postId).subscribe(
       (data) => {
-        console.log("hi");
        // location.reload();--page reload
-       console.log("testing",data);
-        this.commentsService.findFirstThree(data).subscribe(data=>
+        this.commentsService.findFirstThree(this.postId).subscribe(data=>
           {
-            this.getComment=data;
-            console.log("inside co");
             this.ngOnInit();
+            this.getComment=data;
           });
       },
       (err) => {
@@ -77,7 +73,6 @@ public postSubmit(){
   public showMore(){
     {
       this.moreComments=true;
-      console.log("on click"+this.moreComments);
       this.commentsService.findAllComments(this.postId).subscribe(data=>{
         this.getComment=data;
     });
