@@ -12,7 +12,9 @@ import {
   MatTooltipModule,
   MatSelectModule
 } from '@angular/material';
-import { HomeComponent } from 'app/admin/home/home.component';
+import { TimeTableListComponent } from 'app/admin/time-table-list/time-table-list.component';
+import { RegisterComponent } from 'app/account/register/register.component';
+import { TimeTableAdminComponent } from 'app/admin/time-table-admin/time-table-admin.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { HomeComponent } from 'app/admin/home/home.component';
     MatTooltipModule
   ],
   declarations: [
-    HomeComponent
+    TimeTableListComponent,
+    RegisterComponent,
+    TimeTableAdminComponent
   ]
 })
 

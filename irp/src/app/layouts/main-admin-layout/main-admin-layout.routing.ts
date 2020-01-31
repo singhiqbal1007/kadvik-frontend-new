@@ -1,6 +1,11 @@
 import { Routes } from "@angular/router";
-import { HomeComponent } from "../../admin/home/home.component";
+import { TimeTableListComponent } from "app/admin/time-table-list/time-table-list.component";
+import { RegisterComponent } from "app/account/register/register.component";
+import { TimeTableAdminComponent } from "app/admin/time-table-admin/time-table-admin.component";
 
 export const MainAdminLayoutRoutes: Routes = [
-  { path: "home", component: HomeComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: "register", component: RegisterComponent},
+  { path: "timetable", component: TimeTableListComponent},
+  { path: "timetable/:courseId", component: TimeTableAdminComponent}
 ];

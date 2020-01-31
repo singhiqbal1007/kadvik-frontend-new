@@ -38,10 +38,7 @@ import { AdminComponentsModule } from './layouts/main-admin-layout/components/ad
     AdminLayoutComponent,
     MainAdminLayoutComponent,
     LoginComponent,
-    LogoutComponent,
-    TimeTableListComponent,
-    TimeTableAdminComponent,
-    RegisterComponent
+    LogoutComponent
   ],
   imports: [
     BrowserAnimationsModule,

@@ -14,8 +14,6 @@ import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin
 
 const routes: Routes =[
   { path: 'login', component: LoginComponent },
-  { path: 'admin/register', component: RegisterComponent},
-  { path: 'admin/timeTableAdmin/:courseId', component: TimeTableAdminComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'student', redirectTo: '/student/notifications', pathMatch: 'full' },
   { path: 'student', component: AdminLayoutComponent, canActivate: [AuthGuardService],
@@ -24,7 +22,7 @@ const routes: Routes =[
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
   },
-  { path: 'admin', redirectTo: '/admin/home', pathMatch: 'full' },
+  { path: 'admin', redirectTo: '/admin/register', pathMatch: 'full' },
   { path: 'admin', component: MainAdminLayoutComponent,
     children: [{
       path: '',
