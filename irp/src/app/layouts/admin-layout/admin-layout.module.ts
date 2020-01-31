@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../student/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../student/user-profile/user-profile.component';
 import { NotificationsComponent } from '../../student/notifications/notifications.component';
 
@@ -41,7 +40,6 @@ import { GetpostsComponent } from 'app/student/forum/getposts/getposts.component
     ExamModule
   ],
   declarations: [
-    DashboardComponent,
     UserProfileComponent,
     NotificationsComponent,
     TimetableComponent,

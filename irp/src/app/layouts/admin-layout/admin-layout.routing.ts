@@ -1,5 +1,4 @@
 import { Routes } from "@angular/router";
-import { DashboardComponent } from "../../student/dashboard/dashboard.component";
 import { UserProfileComponent } from "../../student/user-profile/user-profile.component";
 import { NotificationsComponent } from "../../student/notifications/notifications.component";
 import { FeedbackListComponent } from "../../student/feedback/feedback-list/feedback-list.component";
@@ -55,7 +54,6 @@ export const AdminLayoutRoutes: Routes = [
   //     }]
   // }
   { path: '', redirectTo: '/notifications', pathMatch: 'full' },
-  { path: "dashboard", component: DashboardComponent },
   { path: "user-profile", component: UserProfileComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "feedback", component: FeedbackListComponent },

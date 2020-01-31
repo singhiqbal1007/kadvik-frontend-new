@@ -10,7 +10,6 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { DashboardComponent } from './student/dashboard/dashboard.component';
 import { UserProfileComponent } from './student/user-profile/user-profile.component';
 import { NotificationsComponent } from './student/notifications/notifications.component';
 import {
