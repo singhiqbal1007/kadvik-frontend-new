@@ -59,7 +59,7 @@ export class GetpostsComponent implements OnInit {
   public showMore() {
     {
       this.showMoreLoading = true;//start loading icon
-      console.log(this.getPost.length);
+     // console.log(this.getPost.length);
       this.morePosts = true;
       this.postsService.getAllPosts().subscribe(data => {
         this.getPost = data;

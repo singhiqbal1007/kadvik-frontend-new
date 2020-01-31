@@ -29,7 +29,7 @@ export class FeedbackService {
       assignment: Number(feedback.assignment),
       comments: feedback.comments
     };
-    console.log(body)
+    //console.log(body)
     return this.http.post<Feedback>(this.rootUrl + "/addfeedback", body);
   }
 }
