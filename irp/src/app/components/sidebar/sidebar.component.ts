@@ -14,6 +14,7 @@ export const ROUTES: RouteInfo[] = [
   { path: "/student/time-table", title: "Time Table", icon: "content_paste", class: "" },
   { path: "/student/feedback", title: "Feedback", icon: "feedback", class: "" },
   { path: "/student/exam", title: "Exam", icon: "menu_book", class: "" },
+  { path: "/student/report", title: "Reports", icon: "list", class: "" },
   { path: "/student/forum", title: "Forum", icon: "forum", class: ""},
   { path: "/student/user-profile", title: "User Profile", icon: "person", class: "" }
 ];

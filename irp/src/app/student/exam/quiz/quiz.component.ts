@@ -12,7 +12,7 @@ import { SubjectsService } from '../examService/subjects.service';
 export class QuizComponent implements OnInit {
 
   activate: number;
-  progressPercent:number;
+  progressPercent: number;
 
   constructor(private router: Router, private quizService: QuizService, private subjectService: SubjectsService) { }
 
@@ -21,9 +21,9 @@ export class QuizComponent implements OnInit {
     if (parseInt(localStorage.getItem('seconds')) < 1800) {
       this.quizService.seconds = parseInt(localStorage.getItem('seconds'));
       this.quizService.qstProgress = parseInt(localStorage.getItem('qstProgress'));
-      this.progressPercent=(this.quizService.qstProgress+1)*10;
+      this.progressPercent = (this.quizService.qstProgress + 1) * 10;
       this.quizService.questions = JSON.parse(localStorage.getItem('questions'));
-      this.subjectService.subjectName= localStorage.getItem("subjectName");
+      this.subjectService.subjectName = localStorage.getItem("subjectName");
       if (this.quizService.qstProgress == 10)
         this.router.navigate(['/student', 'exam', 'result']);
       else {
@@ -36,7 +36,8 @@ export class QuizComponent implements OnInit {
     else {
       this.quizService.seconds = 1800;
       this.quizService.qstProgress = 0;
-      this.progressPercent=(this.quizService.qstProgress+1)*10;
+      this.progressPercent = (this.quizService.qstProgress + 1) * 10;
+      //to get all questions(old)
       /* this.quizService.getQuestions().subscribe(
          (data: any) => {
            console.log('quizData'+ data);
@@ -82,7 +83,7 @@ export class QuizComponent implements OnInit {
     localStorage.setItem('questions', JSON.stringify(this.quizService.questions));
     this.next(this.quizService.qstProgress);
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
-    this.progressPercent=(this.quizService.qstProgress+1)*10;
+    this.progressPercent = (this.quizService.qstProgress + 1) * 10;
 
   }
 
@@ -93,7 +94,7 @@ export class QuizComponent implements OnInit {
     else
       this.quizService.qstProgress--;
     this.activate = this.quizService.questions[this.quizService.qstProgress].answer;
-    this.progressPercent=(this.quizService.qstProgress+1)*10;
+    this.progressPercent = (this.quizService.qstProgress + 1) * 10;
   }
 
   next(qProgress) {
@@ -102,15 +103,15 @@ export class QuizComponent implements OnInit {
     else
       this.quizService.qstProgress++;
     this.activate = this.quizService.questions[this.quizService.qstProgress].answer;
-    this.progressPercent=(this.quizService.qstProgress+1)*10;
+    this.progressPercent = (this.quizService.qstProgress + 1) * 10;
   }
 
   onSubmit() {
     this.quizService.qstProgress = 10;
-    this.quizService.subFlag=false;
+    this.quizService.subFlag = false;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
     localStorage.setItem('subFlag', this.quizService.subFlag.toString());
-    this.progressPercent=(this.quizService.qstProgress+1)*10;
+    this.progressPercent = (this.quizService.qstProgress + 1) * 10;
     clearInterval(this.quizService.timer);
     this.quizService.examFlag = false;
     this.router.navigate(['/student', 'exam', 'result']);

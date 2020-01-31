@@ -1,0 +1,38 @@
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card card-profile">
+                    <div class="card-body">
+                        <h2 class="card-title color-black">{{student.firstName}} {{student.lastName}}</h2>
+                        <div class="card-description color-black">
+                            <div class="item">
+                                <h3><span>PRN: </span>190840-{{student.prn}}</h3>
+                            </div>
+                            <div>
+                                <i class="material-icons t-up">assignment</i>
+                            </div>
+                            <table class="table table-hover">
+                                <thead class="text-primary">
+                                    <th><h3>Subjects</h3></th>
+                                    <th><h3>Marks</h3></th>
+                                </thead>
+                                <tbody>
+                                    <ng-container class="item" *ngFor="let report of this.reportService.reports">
+                                        <tr>
+                                            <td><h3>{{report.subjectName | uppercase}}</h3></td>
+                                            <td><h3>{{report.marks*10}}</h3></td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+</div>
