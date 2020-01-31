@@ -15,6 +15,7 @@ import {
 import { TimeTableListComponent } from 'app/admin/time-table-list/time-table-list.component';
 import { RegisterComponent } from 'app/admin/register/register.component';
 import { TimeTableAdminComponent } from 'app/admin/time-table-admin/time-table-admin.component';
+import { AdminExamModule } from 'app/admin/admin-exam/admin-exam.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { TimeTableAdminComponent } from 'app/admin/time-table-admin/time-table-a
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    AdminExamModule
   ],
   declarations: [
     TimeTableListComponent,
