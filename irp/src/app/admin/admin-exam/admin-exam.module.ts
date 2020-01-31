@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminQuizComponent } from './admin-quiz/admin-quiz.component';
+import { ReportComponent } from './report/report.component';
+import { QuestionComponent } from './question/question.component';
 
 
 
 @NgModule({
-  declarations: [AdminQuizComponent],
+  declarations: [ReportComponent, QuestionComponent],
   imports: [
     CommonModule
   ]

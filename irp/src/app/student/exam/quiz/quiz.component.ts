@@ -27,7 +27,7 @@ export class QuizComponent implements OnInit {
       if (this.quizService.qstProgress == 10)
         this.router.navigate(['/student', 'exam', 'result']);
       else {
-        console.log("flag before cond "+this.quizService.examFlag)
+        //console.log("flag before cond "+this.quizService.examFlag)
         if (this.quizService.examFlag == false)
           this.startTimer();
       }

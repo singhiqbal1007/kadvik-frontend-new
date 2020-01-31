@@ -64,11 +64,11 @@ export class QuizService {
       }
       this.subFlag=true;
       localStorage.setItem('subFlag', this.subFlag.toString());
-      console.log(body);
+     // console.log(body);
       return this.http.post(this.rootUrl + "/result/submit", body);
     }
     else{
-      alert("Marks are Already Submitted");
+     // alert("Marks are Already Submitted");
       body= {
         "prn": sessionStorage.getItem("prn"),
         "subjectId": 0,
