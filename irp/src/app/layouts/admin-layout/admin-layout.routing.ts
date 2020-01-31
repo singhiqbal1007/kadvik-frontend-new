@@ -75,5 +75,5 @@ export const AdminLayoutRoutes: Routes = [
   { path: "exam/quiz", component: QuizComponent },
   { path: "exam/result", component: ResultComponent },
   { path: "forum", component:GetpostsComponent },
-  { path: "comments", component: GetcommentsComponent}
+  { path: "forum/comments", component: GetcommentsComponent}
 ];

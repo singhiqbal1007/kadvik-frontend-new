@@ -117,6 +117,10 @@ export class NavbarComponent implements OnInit {
         return this.listTitles[item].title;
       }
     }
+    if(array[2].includes('?')){
+      var ret = array[2].split("?");
+      return ret[0];
+    }
     return array[2];
   }
 }

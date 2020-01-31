@@ -11,6 +11,7 @@ import { TimeTableListComponent } from './admin/time-table-list/time-table-list.
 import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
 import { RegisterComponent } from './admin/register/register.component';
 import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin-layout.component';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 
 const routes: Routes =[
   { path: 'login', component: LoginComponent },
@@ -23,7 +24,7 @@ const routes: Routes =[
     }]
   },
   { path: 'admin', redirectTo: '/admin/register', pathMatch: 'full' },
-  { path: 'admin', component: MainAdminLayoutComponent,
+  { path: 'admin', component: MainAdminLayoutComponent, canActivate: [AdminAuthGuardService],
     children: [{
       path: '',
       loadChildren: './layouts/main-admin-layout/main-admin.module#MainAdminLayoutModule'
