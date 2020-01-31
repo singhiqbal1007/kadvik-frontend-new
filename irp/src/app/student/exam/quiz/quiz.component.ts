@@ -27,9 +27,9 @@ export class QuizComponent implements OnInit {
       if (this.quizService.qstProgress == 10)
         this.router.navigate(['/student', 'exam', 'result']);
       else {
+        console.log("flag before cond "+this.quizService.examFlag)
         if (this.quizService.examFlag == false)
           this.startTimer();
-
       }
 
     }
@@ -107,7 +107,9 @@ export class QuizComponent implements OnInit {
 
   onSubmit() {
     this.quizService.qstProgress = 10;
+    this.quizService.subFlag=false;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
+    localStorage.setItem('subFlag', this.quizService.subFlag.toString());
     this.progressPercent=(this.quizService.qstProgress+1)*10;
     clearInterval(this.quizService.timer);
     this.quizService.examFlag = false;

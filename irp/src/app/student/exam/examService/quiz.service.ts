@@ -15,6 +15,7 @@ export class QuizService {
   correctAnswerCounter: number = 0;
   subjectId: number;
   examFlag: boolean = false;
+  subFlag: boolean= true;
   // qIds: QuestionId[];
 
   //---ctor---
@@ -51,13 +52,18 @@ export class QuizService {
   }
 
   submitMarks() {
-    var body
-    if(this.subjectId!=null){
+    var body;
+    if(localStorage.getItem('subFlag')!=null)
+      this.subFlag=JSON.parse(localStorage.getItem('subFlag'));
+    if(this.subFlag==false){
+      if(this.subjectId==undefined){this.subjectId=0;}
       body= {
         "prn": sessionStorage.getItem("prn"),
         "subjectId": this.subjectId,
         "marks": this.correctAnswerCounter
       }
+      this.subFlag=true;
+      localStorage.setItem('subFlag', this.subFlag.toString());
       console.log(body);
       return this.http.post(this.rootUrl + "/result/submit", body);
     }
