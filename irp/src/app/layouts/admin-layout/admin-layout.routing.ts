@@ -9,6 +9,7 @@ import { QuizComponent } from "app/student/exam/quiz/quiz.component";
 import { ResultComponent } from "app/student/exam/result/result.component";
 import { GetpostsComponent } from "app/student/forum/getposts/getposts.component";
 import { GetcommentsComponent } from "app/student/forum/getcomments/getcomments.component";
+import { ReportComponent } from "app/student/exam/report/report.component";
 
 export const AdminLayoutRoutes: Routes = [
   // {
@@ -62,6 +63,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "exam", component: SubjectsComponent },
   { path: "exam/quiz", component: QuizComponent },
   { path: "exam/result", component: ResultComponent },
+  { path: "report", component: ReportComponent },
   { path: "forum", component:GetpostsComponent },
   { path: "forum/comments", component: GetcommentsComponent}
 ];

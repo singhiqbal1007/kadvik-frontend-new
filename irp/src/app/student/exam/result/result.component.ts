@@ -45,7 +45,7 @@ export class ResultComponent implements OnInit {
         (err) => { console.log(err) },
         () => { this.submitScore(); }
       );
-
+      
     }
     else
       this.router.navigate(['/student', 'exam', 'quiz']);
