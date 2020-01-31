@@ -11,7 +11,8 @@ import { SubjectsService } from '../examService/subjects.service';
 })
 export class ResultComponent implements OnInit {
 
-  prn;
+  private prn;
+  private loading:boolean = false;
 
   constructor(private quizService: QuizService, private router: Router, private subjectService: SubjectsService) { }
 
@@ -55,7 +56,7 @@ export class ResultComponent implements OnInit {
   }
 
   restart() {
-
+    this.loading = true;//loading icon start
     this.quizService.qstProgress = 0;
     localStorage.setItem('qstProgress', this.quizService.qstProgress.toString());
     localStorage.setItem('questions', "");
@@ -65,6 +66,7 @@ export class ResultComponent implements OnInit {
     localStorage.setItem('subjectId', this.quizService.subjectId.toString());
 
     this.router.navigate(['/student', 'exam']);
+    this.loading= false; // loading icon stop
   }
 
 }

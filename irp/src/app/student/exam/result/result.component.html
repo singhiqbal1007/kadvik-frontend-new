@@ -12,46 +12,56 @@
             </div>
         </div>
 
-        <div class="btn-container">
-            <button class="btn btn-rose btn-round btn-lg" (click)="restart()">
-                New Exam&nbsp;&nbsp;
-                <i class="material-icons t-up">assignment</i>
-                <i class="material-icons t-up">cached</i>
-            </button>
-        </div>
-
-        <br />
-        <hr />
-
-        <h3>Review Questions with Answers</h3>
-        <ng-container *ngFor="let qn of quizService.questions;let i=index">
-            <div class="card">
-                <div class="card-header card-qustion-custom">
-                    <span id="qnum">Question {{i+1}}</span>
-                </div>
-                <div class="card-body">
-                    <h3>{{qn.question}}</h3>
-                    <ul class="collection">
-                        <ng-container *ngFor="let option of qn.options;let j = index">
-                            <hr />
-                            <tr *ngIf="option != null" class="option">
-                                <td style="width:100%">{{option}}</td>
-                                <td><span class="badge float-right" *ngIf="qn.correct==(j+1)">
-                                        <i class="material-icons text-success">check_circle</i>
-                                    </span>
-                                    <span class="badge" *ngIf="qn.answer==(j+1) && qn.correct!=(j+1)">
-                                        <i class="material-icons text-danger" style="float: right">backspace</i>
-                                    </span></td>
-                            </tr>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </ng-container>
+    <div class="btn-container">
+      <span *ngIf="loading; then loadingThenBlock; else loadingElseBlock"></span>
+      <ng-template #loadingThenBlock>
+        <button class="btn btn-rose btn-round btn-lg" disabled>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <i class="fa fa-spinner fa-spin t-up"></i>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </button>
+      </ng-template>
+      <ng-template #loadingElseBlock>
+        <button class="btn btn-rose btn-round btn-lg" (click)="restart()">
+          New Exam&nbsp;&nbsp;
+          <i class="material-icons t-up">assignment</i>
+          <i class="material-icons t-up">cached</i>
+        </button>
+      </ng-template>
     </div>
+
+    <br />
+    <hr />
+
+    <h3>Review Questions with Answers</h3>
+    <ng-container *ngFor="let qn of quizService.questions; let i = index">
+      <div class="card">
+        <div class="card-header card-qustion-custom">
+          <span id="qnum">Question {{ i + 1 }}</span>
+        </div>
+        <div class="card-body">
+          <h3>{{ qn.question }}</h3>
+          <ul class="collection">
+            <ng-container *ngFor="let option of qn.options; let j = index">
+              <hr />
+              <tr *ngIf="option != null" class="option">
+                <td style="width:100%">{{ option }}</td>
+                <td>
+                  <span class="badge float-right" *ngIf="qn.correct == j + 1">
+                    <i class="material-icons text-success">check_circle</i>
+                  </span>
+                  <span class="badge" *ngIf="qn.answer == j + 1 && qn.correct != j + 1">
+                    <i class="material-icons text-danger" style="float: right">backspace</i>
+                  </span>
+                </td>
+              </tr>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
-
-
 
 <!-- <p>result works!</p>
 

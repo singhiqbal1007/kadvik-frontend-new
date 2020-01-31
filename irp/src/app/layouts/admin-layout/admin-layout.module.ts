@@ -5,12 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 import { DashboardComponent } from '../../student/dashboard/dashboard.component';
 import { UserProfileComponent } from '../../student/user-profile/user-profile.component';
-import { TableListComponent } from '../../student/table-list/table-list.component';
-import { TypographyComponent } from '../../student/typography/typography.component';
-import { IconsComponent } from '../../student/icons/icons.component';
-import { MapsComponent } from '../../student/maps/maps.component';
 import { NotificationsComponent } from '../../student/notifications/notifications.component';
-import { UpgradeComponent } from '../../student/upgrade/upgrade.component';
 
 import {
   MatButtonModule,
@@ -49,12 +44,7 @@ import { GetpostsComponent } from 'app/student/forum/getposts/getposts.component
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    TableListComponent,
-    TypographyComponent,
-    IconsComponent,
-    MapsComponent,
     NotificationsComponent,
-    UpgradeComponent,
     TimetableComponent,
     FeedbackComponent,
     FeedbackListComponent,
