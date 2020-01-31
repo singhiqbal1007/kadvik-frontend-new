@@ -53,7 +53,7 @@
             <div class="card-body text-center">
               <h4 class="card-title">{{ x.postText }}</h4>
               <div class="button-container text-center">
-                <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">
+                <a [routerLink]="['/', 'student', 'forum', 'comments']" [queryParams]="{ postId: x.postId }">
                   <button type="button" class="btn btn-primary">Add comments</button>
                 </a>
               </div>
@@ -69,7 +69,7 @@
             <div class="card-body text-center">
               <h4 class="card-title">{{ x.postText }}</h4>
               <div class="button-container text-center">
-                <a [routerLink]="['/', 'student', 'comments']" [queryParams]="{ postId: x.postId }">
+                <a [routerLink]="['/', 'student', 'forum', 'comments']" [queryParams]="{ postId: x.postId }">
                   <button type="button" class="btn btn-primary">Add comments</button>
                 </a>
               </div>

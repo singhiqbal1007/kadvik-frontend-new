@@ -1,5 +1,12 @@
-<ul class="list-group">
-    <li *ngFor="let course of courseList; let i = index" class="list-group-item">
-        <a [routerLink] = "['/','admin/timeTableAdmin', course.courseId]">{{i+1}} {{course.courseName}}</a>
-    </li>
-</ul>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="feedback-head text-center mb-4">
+      <h2 class="title">Courses</h2>
+    </div>
+    <ul class="list-group">
+        <li *ngFor="let course of courseList; let i = index" class="list-group-item">
+            <a [routerLink] = "['/','admin',  'timetable', course.courseId]">{{i+1}} {{course.courseName}}</a>
+        </li>
+    </ul>
+  </div>
+</div>

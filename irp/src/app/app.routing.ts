@@ -9,18 +9,25 @@ import { LoginComponent } from './account/login/login.component';
 import { LogoutComponent } from './account/logout/logout.component';
 import { TimeTableListComponent } from './admin/time-table-list/time-table-list.component';
 import { TimeTableAdminComponent } from './admin/time-table-admin/time-table-admin.component';
-import { RegisterComponent } from './account/register/register.component';
+import { RegisterComponent } from './admin/register/register.component';
+import { MainAdminLayoutComponent } from './layouts/main-admin-layout/main-admin-layout.component';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 
 const routes: Routes =[
   { path: 'login', component: LoginComponent },
-  { path: 'admin/register', component: RegisterComponent},
-  { path: 'admin/timeTableAdmin/:courseId', component: TimeTableAdminComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'student', redirectTo: '/student/notifications', pathMatch: 'full' },
-   { path: 'student', component: AdminLayoutComponent, canActivate: [AuthGuardService],
+  { path: 'student', component: AdminLayoutComponent, canActivate: [AuthGuardService],
     children: [{
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+    }]
+  },
+  { path: 'admin', redirectTo: '/admin/register', pathMatch: 'full' },
+  { path: 'admin', component: MainAdminLayoutComponent, canActivate: [AdminAuthGuardService],
+    children: [{
+      path: '',
+      loadChildren: './layouts/main-admin-layout/main-admin.module#MainAdminLayoutModule'
     }]
   },
   { path: '**', redirectTo: '/student/notifications', pathMatch: 'full' }
