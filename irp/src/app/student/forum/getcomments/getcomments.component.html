@@ -1,33 +1,84 @@
-<div *ngIf="moreComments == false; then thenBlock; else elseBlock"></div>
-<p>asasdfasfasf</p>
-<ng-template #thenBlock>
-  <div *ngFor="let x of getComment | slice: 0:3">
-    <p>{{ x.firstName }} says ---- {{ x.commentText }}--{{ x.time }}--{{ x.date }}</p>
-  </div>
-</ng-template>
-<ng-template #elseBlock>
-  <div *ngFor="let x of getComment">
-    <p>{{ x.firstName }} says ---- {{ x.commentText }}--{{ x.time }}--{{ x.date }}</p>
-  </div>
-</ng-template>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="comment-head text-center mb-4">
+      <a class="float-left" [routerLink]="['/student/forum']"><i class="material-icons">arrow_back</i><b>BACK</b></a>
+      <h2 class="title d-inline">Comments</h2>
+    </div>
 
-<div>
-  <form (submit)="showMore()">
-    <div class="form-group row">
-      <label class="col-form-label">Click here for more comments</label>
-      <button class="button" id="add-button" type="submit">Enter here.</button>
-    </div>
-  </form>
-</div>
-<!--  -->
-<div>
-  <form (submit)="postSubmit()">
-    <div class="form-group row">
-      <label class="col-form-label">Add your comment here!</label>
-      <div class="comments-container">
-        <textarea [(ngModel)]="comments.commentText" name="comments" class="form-control" required></textarea>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert-container" [innerHtml]="alert"></div>
+        <div class="card">
+          <div class="card-header card-header-rose mb-3">
+            <h4 class="card-title"><b>Add your comment</b></h4>
+          </div>
+          <div class="card-body">
+            <div class="text-container mb-4">
+              <textarea [(ngModel)]="comments.commentText" name="comments" class="form-control" rows="4" placeholder="Enter your Comment here"></textarea>
+            </div>
+
+            <div class="btn-container text-center mb-3">
+              <span *ngIf="addLoading; then addLoadingThenBlock; else addLoadingElseBlock"></span>
+              <ng-template #addLoadingThenBlock>
+                <button class="btn btn-rose btn-round btn-lg" disabled>
+                  <i class="fa fa-spinner fa-spin t-up"></i>
+                </button>
+              </ng-template>
+              <ng-template #addLoadingElseBlock>
+                <button (click)="postSubmit()" class="btn btn-rose">
+                  Add
+                </button>
+              </ng-template>
+            </div>
+          </div>
+        </div>
       </div>
-      <button class="button" id="add-button2" type="submit">Enter here.</button>
     </div>
-  </form>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="moreComments == false; then thenBlock; else elseBlock"></div>
+        <ng-template #thenBlock>
+          <div class="card" *ngFor="let x of getComment | slice: 0:3">
+            <div class="card-body">
+              <span class="text-rose">
+                <b>{{ x.firstName }}:</b>
+              </span>
+              {{ x.commentText }}
+              <span class="text-muted float-right">{{ x.date }} | {{ x.time }}</span>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #elseBlock>
+          <div class="card" *ngFor="let x of getComment">
+            <div class="card-body">
+              <span class="text-rose">
+                <b>{{ x.firstName }}:</b>
+              </span>
+              {{ x.commentText }}
+              <span class="text-muted float-right">{{ x.date }} | {{ x.time }}</span>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+        <span *ngIf="showMoreLoading; then loadingThenBlock; else loadingElseBlock"></span>
+        <ng-template #loadingThenBlock>
+          <button class="btn btn-rose btn-round btn-lg" disabled>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <i class="fa fa-spinner fa-spin t-up"></i>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </button>
+        </ng-template>
+        <ng-template #loadingElseBlock>
+          <button (click)="showMore()" class="btn btn-rose btn-round btn-lg">
+            Show More&nbsp;&nbsp;
+            <i class="material-icons t-up">expand_more</i>
+          </button>
+        </ng-template>
+      </div>
+    </div>
+  </div>
 </div>

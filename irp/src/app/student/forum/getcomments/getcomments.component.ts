@@ -1,103 +1,79 @@
-import { OnInit, Component, Input } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { OnInit, Component, Input } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 
-import { Observable, interval, Subscription } from 'rxjs';
-import { Comments } from '../models/Comments';
-import { CommentsService } from '../services/comments.service';
-
-
+import { Observable, interval, Subscription } from "rxjs";
+import { Comments } from "../models/Comments";
+import { CommentsService } from "../services/comments.service";
 
 @Component({
-  selector: 'app-getcomments',
-  templateUrl: './getcomments.component.html',
-  styleUrls: ['./getcomments.component.scss']
+  selector: "app-getcomments",
+  templateUrl: "./getcomments.component.html",
+  styleUrls: ["./getcomments.component.scss"]
 })
 export class GetcommentsComponent implements OnInit {
-  postId: number;
+  constructor(private router: Router, private commentsService: CommentsService, private route: ActivatedRoute) {}
 
-  // @Input() postId:number;
-  constructor(private router: Router,private commentsService:CommentsService,private route: ActivatedRoute) { }
-  public getComment : Comments[];
-  public comments: Comments=new Comments();
-  public counter:number;
+  private postId: number;
+  public getComment: Comments[];
+  public comments: Comments = new Comments();
+  public counter: number;
   private updateSubscription: Subscription;
-  public finalcount:number;
-  public moreComments:boolean;
+  public finalcount: number;
+  public moreComments: boolean;
+  private addLoading: boolean = false;
+  private showMoreLoading: boolean = false;
+  public alert: String = "";
 
-
-//   ngOnInit() { ----normally working
-// //    this.commentsService.getNumberOfComments(this.counter)
-// var data1 = this.route.snapshot.queryParamMap.get('firstParamKey');
-// console.log(data1);
-// console.log(this.postId);    
-//   var data=this.postId;
-//     console.log("getcomm",data);
-//     this.commentsService.findAll(data).subscribe(data=>{
-//       this.getComment=data;
-//       // console.log(this.getComment);
-//   });
-// }
-
-
-  ngOnInit() { 
-    // this.updateSubscription = interval(4000).subscribe((val) => {
-    var data1 = this.route.snapshot.queryParamMap.get('postId');
+  ngOnInit() {
+    this.comments.commentText = "";
+    var data1 = this.route.snapshot.queryParamMap.get("postId");
     this.postId = Number(data1);
-    this.moreComments=false;
-    this.commentsService.findFirstThree(this.postId).subscribe(data=>{
-      this.getComment=data;
-      // this.refreshData(); //working for ajax
-  });
-// });
-}
-
-public postSubmit(){
-  this.counter++;
-  {
-    this.commentsService.postSubmit(this.comments, this.postId).subscribe(
-      (data) => {
-       // location.reload();--page reload
-        this.commentsService.findFirstThree(this.postId).subscribe(data=>
-          {
-            this.ngOnInit();
-            this.getComment=data;
-          });
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
-  }
-}
-
-  public showMore(){
-    {
-      this.moreComments=true;
-      this.commentsService.findAllComments(this.postId).subscribe(data=>{
-        this.getComment=data;
+    this.moreComments = false;
+    this.commentsService.findFirstThree(this.postId).subscribe(data => {
+      this.getComment = data;
     });
+  }
+
+  public postSubmit() {
+    this.alert = "";
+    this.addLoading = true;
+    if (this.comments.commentText.length < 1) {
+      this.alert = `<div class="alert text-center alert-danger">
+    Comment cannot be empty
+  </div>`;
+      this.addLoading = false;
+      return;
+    }
+    this.counter++;
+    {
+      this.commentsService.postSubmit(this.comments, this.postId).subscribe(
+        data => {
+          // location.reload();--page reload
+          this.commentsService.findFirstThree(this.postId).subscribe(data => {
+            this.getComment = data;
+            this.addLoading = false;
+            this.comments.commentText = "";
+            this.alert = `<div class="alert text-center alert-success">
+            Your comment added; 
+          </div>`;
+            this.ngOnInit();
+          });
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    }
+  }
+
+  public showMore() {
+    {
+      this.showMoreLoading = true; //show loader
+      this.moreComments = true;
+      this.commentsService.findAllComments(this.postId).subscribe(data => {
+        this.getComment = data;
+        this.showMoreLoading = false; //hide loader
+      });
     }
   }
 }
-
-//  //ajax 
-//  private refreshData(): void {
-//   this.commentsSubscription = this.commentsService.findAll(this.postId).subscribe(comments => {
-//       this.getComment = comments;
-//       this.subscribeToData();
-//   });
-// }
-
-// private subscribeToData(): void {
-//   this.timerSubscription = Observable.timer(5000).first().subscribe(() => this.refreshData());
-// }
-
-
-// ngOnInit() {
-//   this.updateSubscription = interval(4000).subscribe((val) => 
-//   { 
-//       this.postsService.findAll().subscribe(data=>
-//         {this.getPost=data;
-//         });
-// });
-// }
