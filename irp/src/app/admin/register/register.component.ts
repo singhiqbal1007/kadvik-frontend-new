@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
     );
   }
   public registerStudent(){
-    console.log(this.student);
+    //console.log(this.student);
     if(this.cPassword==this.student.password)
      this._accountService.register(this.student).subscribe(
        (data) => {
