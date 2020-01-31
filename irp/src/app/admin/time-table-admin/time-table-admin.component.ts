@@ -29,11 +29,11 @@ export class TimeTableAdminComponent implements OnInit {
     this._courseService.getAllCourse().subscribe((data) => {
         this.route.params.subscribe((param) => {
           for (const [key, course] of Object.entries(data)) {
-            console.log(course['courseId']);
+            //console.log(course['courseId']);
             if (course['courseId'] == param['courseId']) {
               this.course.courseId = Number(course['courseId']);
               this.course.courseName = course['courseName'];
-              console.log(this.course.courseName);
+              //console.log(this.course.courseName);
               this.flag = true;
             }
           }

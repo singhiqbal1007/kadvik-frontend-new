@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private _accountService: AccountService, private _adminService: AdminService) {}
 
   ngOnInit() {
-    console.log(this.adminToggle);
+   // console.log(this.adminToggle);
   }
 
   //login function
@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     } else {
       this._adminService.authenticate(this.email, this.password).subscribe(
         data => {
-            console.log(data);
+           // console.log(data);
           if (data == false) {
             //if invalid details
             this.password = "";
