@@ -54,7 +54,7 @@ export class GetcommentsComponent implements OnInit {
             this.addLoading = false;
             this.comments.commentText = "";
             this.alert = `<div class="alert text-center alert-success">
-            Your comment added; 
+            Your comment added
           </div>`;
             this.ngOnInit();
           });
