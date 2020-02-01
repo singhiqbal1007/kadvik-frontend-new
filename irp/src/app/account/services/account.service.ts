@@ -35,8 +35,10 @@ export class AccountService {
   }
 
   public logOut() {
-    sessionStorage.removeItem('prn');
-    sessionStorage.removeItem('adminId');
+    sessionStorage.clear();
+    // sessionStorage.removeItem('prn');
+    // sessionStorage.removeItem('adminId');
+    localStorage.clear();
   }
 
   public register(student: Register) {

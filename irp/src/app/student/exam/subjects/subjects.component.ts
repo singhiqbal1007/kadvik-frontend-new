@@ -17,6 +17,7 @@ export class SubjectsComponent implements OnInit {
       //console.log('hey');
       this.subjectService.getSubjects().subscribe(
         (data: any) => {
+          console.log(data)
           this.subjectService.subjects = data;
         }, (err) => {
           console.log(err);

@@ -9,8 +9,6 @@ export const MainAdminLayoutRoutes: Routes = [
   { path: '', redirectTo: '/register', pathMatch: 'full' },
   { path: "register", component: RegisterComponent},
   { path: "timetable", component: TimeTableListComponent},
-  { path: "timetable/:courseId", component: TimeTableAdminComponent},
-  { path: "report", component: ReportComponent},
-  { path: "question", component: QuestionComponent}
+  { path: "timetable/:courseId", component: TimeTableAdminComponent}
   
 ];
